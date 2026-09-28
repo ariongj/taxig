@@ -7,6 +7,12 @@
   <meta name="description" content="Taxi Gusinje: sigurna i udobna putovanja iz Gusinja za Plav, Vusanje, Skadar, Theth, Tiranu, Podgoricu i aerodrome. Automobil, kombi 8+1 i autobus. Rezervacija telefonom 24/7.">
   <meta name="theme-color" content="#0a0e17">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="alternate" hreflang="sr-ME" href="https://ariongj.github.io/taxig/">
+  <link rel="alternate" hreflang="sq" href="https://ariongj.github.io/taxig/?lang=sq">
+  <link rel="alternate" hreflang="en" href="https://ariongj.github.io/taxig/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/taxig/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sr_ME">
   <meta property="og:title" content="Taxi Gusinje – Sigurna i udobna putovanja, 24/7">
@@ -61,6 +67,11 @@
       <stop offset="0.3" stop-color="#ffb85e" stop-opacity="0.38"/>
       <stop offset="1" stop-color="#ff9a4a" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="pano-snowcap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f1f8" stop-opacity="0.95"/>
+      <stop offset="0.1" stop-color="#e4e2f0" stop-opacity="0.55"/>
+      <stop offset="0.18" stop-color="#d9d8ea" stop-opacity="0"/>
+    </linearGradient>
     <linearGradient id="pano-far-fill" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#6c6591"/>
       <stop offset="0.14" stop-color="#4e5282"/>
@@ -120,6 +131,14 @@
   <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
   <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/><path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19"/></symbol>
   <symbol id="i-city" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l6-4v18"/><path d="M19 21V11l-8-4"/><path d="M8 9v.01M8 12v.01M8 15v.01M8 18v.01M15 14v.01M15 17v.01"/></symbol>
+  <symbol id="i-wx-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-wx-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-wx-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></symbol>
+  <symbol id="i-wx-fog" viewBox="0 0 24 24"><path d="M4 14.9A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.24"/><path d="M16 17H7M17 21H9"/></symbol>
+  <symbol id="i-wx-rain" viewBox="0 0 24 24"><path d="M4 14.9A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.24"/><path d="M16 14v6M8 14v6M12 16v6"/></symbol>
+  <symbol id="i-wx-snow" viewBox="0 0 24 24"><path d="M4 14.9A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.24"/><path d="M8 15h.01M8 19h.01M12 17h.01M12 21h.01M16 15h.01M16 19h.01"/></symbol>
+  <symbol id="i-wx-storm" viewBox="0 0 24 24"><path d="M6 16.33A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 1.4 8.78"/><path d="m13 12-3 5h4l-3 5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -187,11 +206,13 @@
           <radialGradient id="plane-glow"><stop offset="0" stop-color="#ffffff" stop-opacity="0.75"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
           <linearGradient id="contrail" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity="0.38"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
           <linearGradient id="valley-mist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9b9d6" stop-opacity="0"/><stop offset="0.5" stop-color="#c9b9d6" stop-opacity="0.16"/><stop offset="1" stop-color="#c9b9d6" stop-opacity="0"/></linearGradient>
+          <linearGradient id="fog-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6d0e2" stop-opacity="0"/><stop offset="0.35" stop-color="#d6d0e2" stop-opacity="0.34"/><stop offset="0.7" stop-color="#d6d0e2" stop-opacity="0.28"/><stop offset="1" stop-color="#d6d0e2" stop-opacity="0"/></linearGradient>
         </defs>
 
         <g class="pl pl-sky" aria-hidden="true">
           <rect width="1600" height="520" fill="url(#pano-sky)"/>
           <rect class="pano-sun" width="1600" height="520" fill="url(#pano-sun)"/>
+          <rect class="sky-veil" width="1600" height="520" fill="#141a30"/>
         </g>
 
         <g class="pl pl-clouds" aria-hidden="true">
@@ -212,6 +233,7 @@
 
         <g class="pl pl-far">
           <use href="#pano-far" fill="url(#pano-far-fill)"/>
+          <use href="#pano-far" class="snowcap" fill="url(#pano-snowcap)"/>
           <use href="#pano-far-ridge" class="pano-rim"/>
           <text class="peak-label" x="796" y="112" text-anchor="middle" data-i18n="peak.karanfili">Karanfili</text>
           <text class="peak-label peak-rosit" x="1122" y="136" text-anchor="middle" data-i18n="peak.rosit">Maja Rosit</text>
@@ -261,12 +283,21 @@
           <a class="spot" href="#booking" data-place="spot.vusanje" transform="translate(1080 366)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-0.9s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-0.9s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-18" text-anchor="middle" data-i18n="spot.vusanje">Vusanje</text></a>
           <a class="spot" href="#booking" data-place="spot.vermosh" transform="translate(1480 398)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-1.7s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-1.7s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-18" text-anchor="middle" data-i18n="spot.vermosh">Vermoš</text></a>
         </g>
+        <g class="wx-layer" aria-hidden="true"></g>
+        <rect class="wx-flash" width="1600" height="520" fill="#dfe8ff" aria-hidden="true"/>
       </svg>
       <p class="pano-hint"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="hero.hint">Dodirnite mjesto da ga izaberete kao odredište</span></p>
     </div>
     <div class="container hero-grid">
       <div class="hero-content">
-        <p class="status"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.status">Na usluzi 24/7 · Gusinje, Crna Gora</span></p>
+        <div class="hero-chips">
+          <p class="status"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.status">Na usluzi 24/7 · Gusinje, Crna Gora</span></p>
+          <p class="live-chip">
+            <span class="sr-only" data-i18n="live.label">Sada u Gusinju:</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span id="live-time">--:--</span>
+            <span class="live-wx" id="live-wx" hidden><svg class="icon" aria-hidden="true"><use href="#i-wx-cloud"/></svg><span id="live-temp"></span><span class="live-desc" id="live-desc"></span></span>
+          </p>
+        </div>
         <h1 class="hero-title" data-i18n-html="hero.title">Taksi i transferi <span>širom regiona</span></h1>
         <p class="hero-lead" data-i18n="hero.lead">Sigurna i udobna putovanja automobilom, kombijem 8+1 ili autobusom – Gusinje, Plav, Vusanje, Theth, Valbona, Podgorica, Skadar, Tirana i svi aerodromi.</p>
 
@@ -524,6 +555,7 @@
         <p class="eyebrow" data-i18n="how.kicker">Kako funkcioniše</p>
         <h2 class="h2" data-i18n="how.title">Tri koraka do odredišta</h2>
       </div>
+      <div class="steps-wrap">
       <ol class="steps">
         <li class="step reveal">
           <span class="step-num">1</span>
@@ -541,6 +573,8 @@
           <p data-i18n="how.s3.text">Sigurna i udobna vožnja do odredišta. Bez plaćanja online.</p>
         </li>
       </ol>
+      <span class="steps-taxi" aria-hidden="true"><svg class="icon"><use href="#i-car"/></svg></span>
+      </div>
     </div>
   </section>
 
@@ -699,6 +733,44 @@
   </section>
 
   <!-- CONTACT BAND -->
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container faq-grid">
+      <div class="section-head faq-head reveal">
+        <p class="eyebrow" data-i18n="faq.kicker">Pitanja</p>
+        <h2 class="h2" data-i18n="faq.title">Česta pitanja</h2>
+        <p class="lead" data-i18n="faq.lead">Niste pronašli odgovor? Pozovite nas u bilo koje doba dana i noći.</p>
+        <a class="btn btn-ghost" href="tel:+38269821214" data-link="tel"><svg class="icon"><use href="#i-phone"/></svg><span data-phone-text>+382 69 821 214</span></a>
+      </div>
+      <div class="faq-list">
+        <details class="faq reveal" open>
+          <summary><span data-i18n="faq.q1">Kako da rezervišem vožnju?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p data-i18n="faq.a1">Pozovite nas, pišite na WhatsApp ili Viber, ili pošaljite zahtjev preko formulara na ovoj stranici. Vlasnik vam uzvraća poziv i potvrđuje cijenu, vrijeme i mjesto polaska.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><span data-i18n="faq.q2">Da li radite noću, vikendom i praznicima?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p data-i18n="faq.a2">Da. Dostupni smo 24/7 – i kasno noću, nedjeljom i praznicima.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><span data-i18n="faq.q3">Da li vozite do aerodroma?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p data-i18n="faq.a3">Da – do aerodroma u Podgorici, Tivtu, Tirani i Prištini, i sa njih. Pošaljite nam broj leta i planiramo preuzimanje prema vašem slijetanju.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><span data-i18n="faq.q4">Da li vozite u Albaniju i na Kosovo?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p data-i18n="faq.a4">Da – za Skadar, Theth, Tiranu, Drač, Peć, Prištinu i Prizren. Za prelazak granice ponesite važeći pasoš ili ličnu kartu.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><span data-i18n="faq.q5">Kako se određuje cijena?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p data-i18n="faq.a5">Cijena je fiksna i dogovara se telefonom prije polaska. Zavisi od relacije, vozila i broja putnika – bez skrivenih troškova.</p>
+        </details>
+        <details class="faq reveal">
+          <summary><span data-i18n="faq.q6">Možete li prevesti veću grupu?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p data-i18n="faq.a6">Da. Za porodice i grupe imamo kombi 8+1, a za veće grupe autobus. Javite nam broj putnika i datum.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="cta">
     <div class="cta-bg" aria-hidden="true">
       <svg class="pano pano-cta" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMax slice" focusable="false">
@@ -759,6 +831,7 @@
           <a href="#routes" data-i18n="nav.routes">Destinacije</a>
           <a href="#how" data-i18n="nav.how">Kako funkcioniše</a>
           <a href="#booking" data-i18n="nav.booking">Rezerviši</a>
+          <a href="#faq" data-i18n="nav.faq">Pitanja</a>
         </nav>
       </div>
       <div>
@@ -785,6 +858,9 @@
     </div>
   </div>
 </footer>
+
+<!-- Floating WhatsApp (desktop, after scrolling) -->
+<a class="float-wa" href="https://wa.me/38269821214" data-link="wa" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span data-i18n="float.wa">Pišite nam</span></a>
 
 <!-- Mobile action bar -->
 <div class="mobile-bar">

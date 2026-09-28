@@ -90,6 +90,7 @@
     renderPrices();
     renderSubmitHint();
     renderSuccessText();
+    renderWeather();
   }
 
   /* ---------- contact links and photos from config ---------- */
@@ -397,6 +398,158 @@
       kick();
     });
     hero.addEventListener('pointerleave', function () { target.x = 0; target.y = 0; kick(); });
+  })();
+
+  /* ---------- live clock + weather in Gusinje (Open-Meteo, free, no key) ---------- */
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var WX = { kind: null, temp: null, isDay: true };
+  var WX_KINDS = {
+    clear: [0, 1], partly: [2], cloudy: [3], fog: [45, 48],
+    drizzle: [51, 53, 55, 56, 57], rain: [61, 63, 65, 66, 67, 80, 81, 82],
+    snow: [71, 73, 75, 77, 85, 86], storm: [95, 96, 99]
+  };
+  var WX_ICONS = { clear: 'sun', partly: 'cloud', cloudy: 'cloud', fog: 'fog', drizzle: 'rain', rain: 'rain', snow: 'snow', storm: 'storm' };
+
+  function wxKind(code) {
+    for (var kind in WX_KINDS) {
+      if (WX_KINDS.hasOwnProperty(kind) && WX_KINDS[kind].indexOf(code) !== -1) return kind;
+    }
+    return 'cloudy';
+  }
+
+  function gusinjeTime(options) {
+    try {
+      var opts = { timeZone: 'Europe/Podgorica' };
+      Object.keys(options).forEach(function (k) { opts[k] = options[k]; });
+      return new Intl.DateTimeFormat('en-GB', opts).format(new Date());
+    } catch (e) { return null; }
+  }
+
+  function renderClock() {
+    var el = $('#live-time');
+    if (!el) return;
+    var text = gusinjeTime({ hour: '2-digit', minute: '2-digit', hour12: false });
+    if (!text) {
+      var d = new Date();
+      text = ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+    }
+    el.textContent = text;
+  }
+
+  function renderWeather() {
+    var box = $('#live-wx');
+    if (!box || !WX.kind) return;
+    $('#live-temp').textContent = Math.round(WX.temp) + '°C';
+    $('#live-desc').textContent = t('wx.' + WX.kind);
+    var icon = (WX.kind === 'clear' && !WX.isDay) ? 'moon' : WX_ICONS[WX.kind];
+    var use = box.querySelector('use');
+    if (use) use.setAttribute('href', '#i-wx-' + icon);
+    box.hidden = false;
+  }
+
+  /* dress the panorama for the weather: veil, snow on the peaks, falling snow/rain, fog, lightning */
+  function setScene(kind, isDay) {
+    var pano = $('.hero .pano');
+    if (!pano) return;
+    ['clear', 'partly', 'cloudy', 'fog', 'drizzle', 'rain', 'snow', 'storm', 'night'].forEach(function (k) {
+      pano.classList.remove('wx-' + k);
+    });
+    if (kind) pano.classList.add('wx-' + kind);
+    if (isDay === false) pano.classList.add('wx-night');
+
+    var layer = pano.querySelector('.wx-layer');
+    if (!layer) return;
+    while (layer.firstChild) layer.removeChild(layer.firstChild);
+    if (reduceMotion) return;
+
+    var rnd = Math.random, i, el, x;
+    if (kind === 'snow') {
+      for (i = 0; i < 90; i++) {
+        el = document.createElementNS(SVGNS, 'circle');
+        el.setAttribute('class', 'flake');
+        el.setAttribute('cx', (rnd() * 1600).toFixed(0));
+        el.setAttribute('cy', '0');
+        el.setAttribute('r', (0.9 + rnd() * 1.8).toFixed(1));
+        el.style.setProperty('--d', (7 + rnd() * 8).toFixed(1) + 's');
+        el.style.setProperty('--delay', (-rnd() * 14).toFixed(1) + 's');
+        el.style.setProperty('--x', ((rnd() * 2 - 1) * 40).toFixed(0) + 'px');
+        layer.appendChild(el);
+      }
+    } else if (kind === 'rain' || kind === 'drizzle' || kind === 'storm') {
+      var count = kind === 'drizzle' ? 70 : 140;
+      for (i = 0; i < count; i++) {
+        el = document.createElementNS(SVGNS, 'line');
+        el.setAttribute('class', 'drop');
+        x = rnd() * 1700;
+        el.setAttribute('x1', x.toFixed(0));
+        el.setAttribute('y1', '0');
+        el.setAttribute('x2', (x - 3).toFixed(0));
+        el.setAttribute('y2', kind === 'drizzle' ? '8' : '14');
+        el.style.setProperty('--d', (kind === 'drizzle' ? 1.1 + rnd() * 0.6 : 0.55 + rnd() * 0.4).toFixed(2) + 's');
+        el.style.setProperty('--delay', (-rnd() * 2).toFixed(2) + 's');
+        layer.appendChild(el);
+      }
+    } else if (kind === 'fog') {
+      el = document.createElementNS(SVGNS, 'rect');
+      el.setAttribute('class', 'fog-bank');
+      el.setAttribute('x', '-100');
+      el.setAttribute('y', '220');
+      el.setAttribute('width', '1800');
+      el.setAttribute('height', '260');
+      el.setAttribute('fill', 'url(#fog-grad)');
+      layer.appendChild(el);
+    }
+  }
+
+  (function () {
+    renderClock();
+    window.setInterval(renderClock, 20000);
+
+    /* the Prokletije peaks carry snow from November to April */
+    var pano = $('.hero .pano');
+    var month = Number(gusinjeTime({ month: 'numeric' })) || (new Date().getMonth() + 1);
+    if (pano && (month >= 11 || month <= 4)) pano.classList.add('season-winter');
+
+    /* ?wx=snow|rain|drizzle|storm|fog|cloudy|partly|clear|night previews a weather scene */
+    var forced = null;
+    try { forced = new URLSearchParams(window.location.search).get('wx'); } catch (e) { /* old browser */ }
+    if (forced === 'night') setScene(null, false);
+    else if (forced && WX_KINDS[forced]) setScene(forced, true);
+
+    if (!window.fetch) return;
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude=42.5622&longitude=19.8342' +
+      '&current=temperature_2m,weather_code,is_day&timezone=Europe%2FPodgorica';
+    fetch(url)
+      .then(function (res) { if (!res.ok) throw new Error('weather ' + res.status); return res.json(); })
+      .then(function (data) {
+        var now = data && data.current;
+        if (!now || typeof now.temperature_2m !== 'number') return;
+        WX.temp = now.temperature_2m;
+        WX.kind = wxKind(now.weather_code);
+        WX.isDay = now.is_day === 1;
+        renderWeather();
+        if (!forced) setScene(WX.kind, WX.isDay);
+      })
+      .catch(function () { /* offline or blocked: keep the default scene */ });
+  })();
+
+  /* ---------- "how it works": the taxi drives while the steps are on screen ---------- */
+  (function () {
+    var wrap = $('.steps-wrap');
+    if (!wrap || !('IntersectionObserver' in window) || reduceMotion) return;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { wrap.classList.toggle('play', entry.isIntersecting); });
+    }, { threshold: 0.35 }).observe(wrap);
+  })();
+
+  /* ---------- floating WhatsApp button after the hero (desktop) ---------- */
+  (function () {
+    var btn = $('.float-wa');
+    var heroEl = $('.hero');
+    if (!btn || !heroEl) return;
+    function toggle() { btn.classList.toggle('show', window.scrollY > heroEl.offsetHeight * 0.7); }
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
   })();
 
   /* ---------- misc ---------- */

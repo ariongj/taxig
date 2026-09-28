@@ -31,6 +31,24 @@ No build step and no framework: upload the files to any web host and it works.
 
 Visitors who prefer reduced motion (a system setting) get a still version without animations.
 
+### Live Gusinje time and weather
+
+The hero shows the current local time in Gusinje and the live weather (free Open-Meteo service, no key,
+loaded by the visitor's browser). The panorama follows the real weather: snow falls and the peaks turn
+white when it snows, rain streaks down in rain, lightning flashes in a storm, fog banks roll in with fog,
+and the sky darkens at night. From November to April the peaks carry snow anyway.
+
+Preview any scene by adding `?wx=` to the address: `snow`, `rain`, `drizzle`, `storm`, `fog`, `cloudy`,
+`partly`, `clear` or `night` (for example `https://ariongj.github.io/taxig/?wx=snow`).
+
+### More on the page
+
+- **How it works** – a small taxi drives along the three steps and the "we call you back" step rings.
+- **FAQ** – six common questions (booking, night work, airports, Albania & Kosovo, price, groups).
+- **Floating WhatsApp button** on desktop once the visitor scrolls past the hero.
+- Home-screen icons for phones (`assets/apple-touch-icon.png`, `assets/favicon-32.png`) and a
+  custom `404.html` page.
+
 ## How the booking request works
 
 1. The customer picks a vehicle (service tile, car hotspot or plan card) or goes straight to the form,
