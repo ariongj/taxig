@@ -60,7 +60,9 @@ same as `?time=23:30`). Both can be combined: `?time=12:00&wx=snow`.
 
 ### Phones
 
-On phones the layout is compact: the booking buttons sit side by side, the vehicle plans are condensed
+On phones the mountain panorama is wider than the screen, so it can be swiped left and right (it starts on
+Gusinje, nudges once to show it moves, and every place is reachable). The layout is compact: the booking
+buttons sit side by side, the vehicle plans are condensed
 cards, destinations form one list, "how it works" is a timeline, date and time share a row in the form, and
 a Call / WhatsApp / Book bar stays at the bottom of the screen.
 

@@ -400,6 +400,43 @@
     hero.addEventListener('pointerleave', function () { target.x = 0; target.y = 0; kick(); });
   })();
 
+  /* ---------- phones: the panorama is wider than the screen and scrolls sideways ----------
+     it starts on Gusinje, nudges once so visitors see it moves, and the hint fades after a swipe */
+  (function () {
+    var scroller = $('.pano-scroll');
+    var hint = $('.pano-hint');
+    if (!scroller) return;
+    var touched = false;
+    function scrollable() { return scroller.scrollWidth > scroller.clientWidth + 1; }
+    function centre() {
+      if (touched || !scrollable()) return;
+      var svg = scroller.querySelector('svg');
+      scroller.scrollLeft = svg.getBoundingClientRect().width * (820 / 1600) - scroller.clientWidth / 2;
+    }
+    function onTouch() {
+      touched = true;
+      if (hint && scrollable()) hint.classList.add('is-done');
+    }
+    centre();
+    window.addEventListener('resize', centre);
+    ['pointerdown', 'touchstart', 'wheel'].forEach(function (type) {
+      scroller.addEventListener(type, onTouch, { passive: true });
+    });
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+    var seen = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      seen.disconnect();
+      if (touched || !scrollable() || !scroller.scrollTo) return;
+      var start = scroller.scrollLeft;
+      window.setTimeout(function () {
+        if (touched) return;
+        scroller.scrollTo({ left: start + 80, behavior: 'smooth' });
+        window.setTimeout(function () { if (!touched) scroller.scrollTo({ left: start, behavior: 'smooth' }); }, 750);
+      }, 600);
+    }, { threshold: 0.6 });
+    seen.observe(scroller);
+  })();
+
   /* ---------- live clock + weather in Gusinje (Open-Meteo, free, no key) ---------- */
   var SVGNS = 'http://www.w3.org/2000/svg';
   var WX = { kind: null, temp: null, isDay: true };
