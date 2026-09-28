@@ -16,11 +16,12 @@ window.TG_CONFIG = {
   /* Viber number in international format. */
   viber: "+38269821214",
 
-  /* Default language when a visitor has not chosen one yet:
-     "auto" = follows the browser language (Albanian -> sq, Montenegrin/Serbian/
-     Bosnian/Croatian -> me, everything else -> en),
-     or force "sq" (Shqip) / "me" (Crnogorski) / "en" (English). */
-  defaultLang: "auto",
+  /* Main language, shown to every visitor who has not picked one:
+     "me" (Crnogorski), "sq" (Shqip) or "en" (English).
+     "auto" follows the browser language instead (Albanian -> sq,
+     Montenegrin/Serbian/Bosnian/Croatian -> me, everything else -> en).
+     A language the visitor picks with the SQ / MNE / EN buttons is remembered. */
+  defaultLang: "me",
 
   /* Optional: receive booking requests by e-mail through a form service
      (for example Formspree: "https://formspree.io/f/xxxxxxxx").

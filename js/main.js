@@ -10,12 +10,13 @@
 
   var CONFIG = window.TG_CONFIG || {};
   var I18N = window.TG_I18N || {};
-  var STORAGE_KEY = 'tg_lang';
+  /* only an explicit choice (a click on a language button) is remembered */
+  var STORAGE_KEY = 'tg_lang_choice';
   /* dictionary key -> value for <html lang> ("cnr" = Montenegrin) */
   var LANG_TAGS = { sq: 'sq', me: 'cnr', en: 'en' };
   /* browser language -> dictionary key */
   var BROWSER_LANGS = { sq: 'sq', en: 'en', sr: 'me', bs: 'me', hr: 'me', cnr: 'me', me: 'me' };
-  var currentLang = 'sq';
+  var currentLang = 'me';
   var lastSuccess = null;
   var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
@@ -27,7 +28,7 @@
   function t(key, vars) {
     var dict = I18N[currentLang] || {};
     var str = dict[key];
-    if (str == null) str = (I18N.sq && I18N.sq[key] != null) ? I18N.sq[key] : key;
+    if (str == null) str = (I18N.me && I18N.me[key] != null) ? I18N.me[key] : key;
     if (vars) {
       Object.keys(vars).forEach(function (name) {
         str = str.split('{' + name + '}').join(vars[name]);
@@ -50,7 +51,7 @@
     try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) { /* storage blocked */ }
     if (stored && I18N[stored]) return stored;
 
-    var preferred = CONFIG.defaultLang || 'auto';
+    var preferred = CONFIG.defaultLang || 'me';
     if (preferred !== 'auto' && I18N[preferred]) return preferred;
 
     var languages = navigator.languages || [navigator.language || 'en'];
@@ -59,13 +60,15 @@
       var mapped = BROWSER_LANGS[primary];
       if (mapped && I18N[mapped]) return mapped;
     }
-    return 'en';
+    return 'me';
   }
 
-  function applyLang(lang) {
-    currentLang = I18N[lang] ? lang : 'sq';
+  function applyLang(lang, remember) {
+    currentLang = I18N[lang] ? lang : 'me';
     document.documentElement.lang = LANG_TAGS[currentLang] || currentLang;
-    try { localStorage.setItem(STORAGE_KEY, currentLang); } catch (e) { /* storage blocked */ }
+    if (remember) {
+      try { localStorage.setItem(STORAGE_KEY, currentLang); } catch (e) { /* storage blocked */ }
+    }
 
     $all('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
     $all('[data-i18n-html]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n-html')); });
@@ -135,7 +138,7 @@
   onScroll();
 
   $all('[data-lang]').forEach(function (btn) {
-    btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang')); });
+    btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang'), true); });
   });
 
   /* ---------- reveal on scroll ---------- */
@@ -362,11 +365,45 @@
     });
   });
 
+  /* ---------- panorama depth: layers follow the mouse (desktop only) ---------- */
+  (function () {
+    var hero = $('.hero');
+    var pano = $('.hero .pano');
+    var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hero || !pano || reduceMotion || !finePointer) return;
+    var layers = [
+      { el: pano.querySelector('.pl-clouds'), x: 10, y: 4, s: 1.02 },
+      { el: pano.querySelector('.pl-far'), x: 7, y: 3, s: 1.015 },
+      { el: pano.querySelector('.pl-mist'), x: 12, y: 4, s: 1.03 },
+      { el: pano.querySelector('.pl-mid'), x: 14, y: 5, s: 1.02 },
+      { el: pano.querySelector('.pl-near'), x: 22, y: 7, s: 1.03 }
+    ].filter(function (layer) { return layer.el; });
+    var target = { x: 0, y: 0 }, now = { x: 0, y: 0 }, frame = 0;
+
+    function render() {
+      now.x += (target.x - now.x) * 0.07;
+      now.y += (target.y - now.y) * 0.07;
+      layers.forEach(function (layer) {
+        layer.el.style.transform = 'translate(' + (-now.x * layer.x).toFixed(2) + 'px,' + (-now.y * layer.y).toFixed(2) + 'px) scale(' + layer.s + ')';
+      });
+      frame = (Math.abs(target.x - now.x) > 0.001 || Math.abs(target.y - now.y) > 0.001) ? requestAnimationFrame(render) : 0;
+    }
+    function kick() { if (!frame) frame = requestAnimationFrame(render); }
+
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      target.x = (e.clientX - r.left) / r.width - 0.5;
+      target.y = (e.clientY - r.top) / r.height - 0.5;
+      kick();
+    });
+    hero.addEventListener('pointerleave', function () { target.x = 0; target.y = 0; kick(); });
+  })();
+
   /* ---------- misc ---------- */
   var year = $('#year');
   if (year) year.textContent = String(new Date().getFullYear());
 
   /* ---------- init ---------- */
   applyContact();
-  applyLang(detectLang());
+  applyLang(detectLang(), false);
 })();

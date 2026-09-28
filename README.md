@@ -12,13 +12,17 @@ No build step and no framework: upload the files to any web host and it works.
    The cars have **hotspots** (Mercedes E-Class, VW Passat, Mercedes Sprinter); clicking one opens
    the booking form with that vehicle selected. Below the card: 24/7 phone, WhatsApp and Viber.
 2. **Regional panorama** (behind and below the hero) – a dusk view from Plav towards the Prokletije:
-   twinkling stars and a shooting star, sunset glow behind the Karanfili crown and Maja e Rosit, drifting
-   clouds and mist, forests, Lake Plav with shimmering water, village lights, and taxi lights driving
-   along the roads. **Destination hotspots**: Liqeni i Plavës, Plavë, Valbonë, Grebaja, Gusinje,
-   Burimet e Ali Pashës, Theth, Vuthaj, Vermosh – tapping one fills it in as the destination of the
-   booking form. Road signs at the edges point to Podgorica / the airport and Shkodër / Tirana.
+   twinkling stars, two shooting stars, a crescent moon, a plane with blinking lights, sunset glow behind
+   the Karanfili crown and Maja Rosit, drifting clouds, mist over the peaks and the valley, forests,
+   Lake Plav with shimmering water, village lights, and six taxis driving along the roads. On desktop
+   the mountain layers follow the mouse for a sense of depth.
+   **Destination hotspots**: Plavsko jezero, Plav, Hridsko jezero, Valbona, Grebaje, Gusinje,
+   Alipašini izvori, Theth, Vusanje, Ropojana, Vermoš – tapping one fills it in as the destination of
+   the booking form. Road signs at the edges point to Podgorica / the airport and Skadar / Tirana.
 3. **Services / three plans** – Car, Kombi 8+1 (most requested), Bus, each with *Request a quote*.
-4. **Destinations** – local trips, airports, cities, groups & events, plus an animated route map.
+4. **Destinations** – local trips, airports, Montenegro, Albania & Kosovo, groups & events, plus an
+   animated route map with taxis driving from Gusinje via Podgorica to the coast (Tivat, Budva, Bar,
+   Ulcinj), via Skadar to Tirana and Durrës, via Peć to Priština and Prizren, and north to Berane and Kolašin.
 5. **How it works** – 1) send request, 2) **the owner calls you back to confirm**, 3) driver picks you up.
 6. **Booking request form** – name, phone, pickup, destination, date, time, passengers, vehicle,
    one-way/return, notes.
@@ -42,9 +46,11 @@ to receive requests **by e-mail** instead. WhatsApp and SMS stay available as a 
 
 ## Languages
 
-- **SQ** Shqip, **MNE** Crnogorski, **EN** English – switch in the header or footer; the choice is remembered.
-- First visit follows the browser language (Albanian → SQ; Montenegrin, Serbian, Bosnian, Croatian → MNE;
-  everything else → EN). Force one with `defaultLang` in `js/config.js`.
+- **MNE** Crnogorski is the main language: the page itself is written in Montenegrin and every visitor
+  sees it first. **SQ** Shqip and **EN** English are one click away in the header or footer, and a
+  visitor's own choice is remembered.
+- Change the main language with `defaultLang` in `js/config.js` (`"me"`, `"sq"`, `"en"`, or `"auto"` to
+  follow the browser language).
 - Links can force a language, handy for sharing: `https://your-site/?lang=sq`, `?lang=mne`, `?lang=en`.
 - All texts live in `js/i18n.js`; every key exists in all three languages.
 

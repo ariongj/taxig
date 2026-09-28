@@ -182,10 +182,32 @@ legend { padding: 0; }
 .pano { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: clamp(300px, 32.5vw, 640px); }
 .pano-sun { animation: glow 9s ease-in-out infinite alternate; }
 @keyframes glow { from { opacity: 0.82; } to { opacity: 1; } }
-.pano-cloud { animation: drift 70s ease-in-out infinite alternate; }
-.pano-cloud.c2 { animation-duration: 90s; animation-delay: -35s; }
-.pano-cloud.c3 { animation-duration: 80s; animation-delay: -55s; }
-@keyframes drift { from { transform: translateX(-70px); } to { transform: translateX(70px); } }
+.pano-cloud { animation: drift 46s ease-in-out infinite alternate; }
+.pano-cloud.c2 { animation-duration: 60s; animation-delay: -20s; }
+.pano-cloud.c3 { animation-duration: 54s; animation-delay: -40s; }
+.pano-cloud.c4 { animation-duration: 50s; animation-delay: -10s; }
+@keyframes drift { from { transform: translateX(-110px); } to { transform: translateX(110px); } }
+
+/* depth layers (moved with the mouse by main.js) */
+.pano .pl { transform-box: view-box; transform-origin: 800px 520px; }
+.pano .pl-clouds { transform: scale(1.02); }
+.pano .pl-far { transform: scale(1.015); }
+.pano .pl-mist { transform: scale(1.03); }
+.pano .pl-mid { transform: scale(1.02); }
+.pano .pl-near { transform: scale(1.03); }
+
+/* plane with blinking lights, moon, second shooting star, valley mist */
+.plane-blink { animation: blink 1.3s steps(1, end) infinite; }
+@keyframes blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0.08; } }
+.moon-glow { animation: glow 7s ease-in-out infinite alternate; }
+.shooting-star.s2 { animation: shoot2 17s linear 9s infinite; }
+@keyframes shoot2 {
+  0% { transform: translate(1260px, 40px); opacity: 0; }
+  1.2% { opacity: 0.9; }
+  6% { transform: translate(900px, 150px); opacity: 0; }
+  100% { transform: translate(900px, 150px); opacity: 0; }
+}
+.valley-mist { animation: mist 22s ease-in-out infinite alternate-reverse; }
 .pano-mist { animation: mist 28s ease-in-out infinite alternate; }
 @keyframes mist { from { transform: translateX(-50px); opacity: 0.65; } to { transform: translateX(50px); opacity: 1; } }
 .pano-rim { fill: none; stroke: url(#pano-rim); stroke-width: 1.4; }
@@ -201,11 +223,13 @@ legend { padding: 0; }
 .road-sign { font-family: var(--body); font-size: 12px; font-weight: 600; letter-spacing: 0.03em; fill: rgba(238, 242, 248, 0.55); }
 
 /* destination hotspots */
-.pano .spots { pointer-events: auto; }
+.pano .spot { pointer-events: auto; }
 .spot { cursor: pointer; }
 .spot:focus { outline: none; }
 .spot-hit { fill: transparent; }
-.spot-dot { fill: var(--yellow); stroke: #0b1020; stroke-width: 2.5; }
+.spot-dot { fill: var(--yellow); stroke: #0b1020; stroke-width: 2.5; transition: r 0.2s, stroke 0.2s; }
+.spot:hover .spot-dot, .spot:focus-visible .spot-dot { r: 7px; }
+.spot-main:hover .spot-dot, .spot-main:focus-visible .spot-dot { r: 9px; }
 .spot-pulse { fill: none; stroke: var(--yellow); stroke-width: 2; }
 .spot-label {
   font-family: var(--body); font-size: 14px; font-weight: 600; fill: #f1f4fa;
@@ -386,6 +410,7 @@ legend { padding: 0; }
 .route-group h3 { display: flex; align-items: center; gap: 10px; font-size: 21px; margin-bottom: 8px; }
 .route-group h3 .icon { color: var(--yellow); width: 19px; height: 19px; }
 .route-group p { font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.route-group-wide { grid-column: 1 / -1; }
 .route-map {
   margin: 0; padding: 14px 14px 10px; border-radius: 24px;
   background: radial-gradient(120% 90% at 50% 0%, #142038 0%, #0d1424 70%);
@@ -559,8 +584,9 @@ legend { padding: 0; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero-content > *, .svc-card, .status-dot, .route-line, .road-line, .hs-dot::after,
-  .tw, .shooting-star, .pano-sun, .pano-cloud, .pano-mist, .pano-shimmer path { animation: none; }
-  .map-pulse, .spot-pulse, .pano-car, .shooting-star { display: none; }
+  .tw, .shooting-star, .pano-sun, .pano-cloud, .pano-mist, .pano-shimmer path,
+  .valley-mist, .moon-glow, .plane-blink { animation: none; }
+  .map-pulse, .spot-pulse, .pano-car, .shooting-star, .plane, .map-taxis { display: none; }
   .plan, .btn, .tile { transition: none; }
 }
 
@@ -621,7 +647,9 @@ legend { padding: 0; }
   .spot-hit { r: 32px; }
   .peak-label { font-size: 18px; }
   .peak-rosit, .road-sign,
-  .spot[data-place="spot.plav"], .spot[data-place="spot.lake"], .spot[data-place="spot.vermosh"] { display: none; }
+  .spot[data-place="spot.plav"], .spot[data-place="spot.lake"], .spot[data-place="spot.vermosh"],
+  .spot[data-place="spot.hrid"], .spot[data-place="spot.ropojana"] { display: none; }
+  .map-label.minor { display: none; }
   .pano-hint { bottom: 12px; font-size: 11.5px; padding: 6px 12px; }
   .route-groups { grid-template-columns: 1fr; }
   .route-map { padding: 8px 6px 8px; border-radius: 18px; }
