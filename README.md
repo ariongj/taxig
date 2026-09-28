@@ -105,14 +105,18 @@ to receive requests **by e-mail** instead. WhatsApp and SMS stay available as a 
 | `js/i18n.js` | every text in Albanian (`sq`), Montenegrin (`me`) and English (`en`) |
 | `js/main.js` | language switch, vehicle preselection, form validation, WhatsApp message |
 | `assets/fleet.jpg` | the vehicles, cropped from the flyer |
-| `assets/flyer.jpg` | the flyer (used as the social-share image) |
+| `assets/og-image.jpg` | the picture WhatsApp / Facebook show when the link is shared (1200 × 630, with the phone number) |
+| `assets/flyer.jpg` | the original printed flyer (not used on the page; it still shows the old number +382 69 821 214) |
 | `assets/favicon.svg` | browser-tab icon |
 
 No external photos are used; everything except the Google fonts is inside this folder.
 
 ## Editing
 
-- **Phone / WhatsApp / Viber**: `js/config.js` → `phone`, `phoneDisplay`, `whatsapp`, `viber`.
+- **Phone / WhatsApp / Viber**: `js/config.js` → `phone`, `phoneDisplay`, `whatsapp`, `viber` (currently the official
+  number +382 69 685 205 for all three). The number is also written into `index.html` (links that work without
+  JavaScript, and the business details for Google), `404.html` and the share picture `assets/og-image.jpg`,
+  so change it there too.
 - **Prices**: `js/config.js` → `prices: { car: 30, van: 50, bus: null }` shows "from €30" / "from €50";
   `null` shows "Price on request".
 - **Vehicle photo**: replace `assets/fleet.jpg` with a sharper photo of the cars (same name, wide format).

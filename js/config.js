@@ -5,16 +5,16 @@
    ========================================================= */
 window.TG_CONFIG = {
   /* Phone number in international format (used for tel: links). */
-  phone: "+38269821214",
+  phone: "+38269685205",
 
   /* How the number is displayed on the page. */
-  phoneDisplay: "+382 69 821 214",
+  phoneDisplay: "+382 69 685 205",
 
   /* WhatsApp number: digits only, no "+" and no spaces. */
-  whatsapp: "38269821214",
+  whatsapp: "38269685205",
 
   /* Viber number in international format. */
-  viber: "+38269821214",
+  viber: "+38269685205",
 
   /* Main language, shown to every visitor who has not picked one:
      "me" (Crnogorski), "sq" (Shqip) or "en" (English).
