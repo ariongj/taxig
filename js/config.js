@@ -1,0 +1,37 @@
+/* =========================================================
+   TAXI GUSINJE – site configuration
+   This is the ONLY file you need to edit for the basics:
+   phone number, WhatsApp/Viber, prices, language.
+   ========================================================= */
+window.TG_CONFIG = {
+  /* Phone number in international format (used for tel: links). */
+  phone: "+38269821214",
+
+  /* How the number is displayed on the page. */
+  phoneDisplay: "+382 69 821 214",
+
+  /* WhatsApp number: digits only, no "+" and no spaces. */
+  whatsapp: "38269821214",
+
+  /* Viber number in international format. */
+  viber: "+38269821214",
+
+  /* Default language when a visitor has not chosen one yet:
+     "auto" = follows the browser language (Albanian -> sq, Montenegrin/Serbian/
+     Bosnian/Croatian -> me, everything else -> en),
+     or force "sq" (Shqip) / "me" (Crnogorski) / "en" (English). */
+  defaultLang: "auto",
+
+  /* Optional: receive booking requests by e-mail through a form service
+     (for example Formspree: "https://formspree.io/f/xxxxxxxx").
+     Leave empty ("") and requests are sent through WhatsApp instead. */
+  formEndpoint: "",
+
+  /* Optional starting prices in EUR per vehicle, shown as "from €30".
+     Use a number, or null to show "Price on request". */
+  prices: {
+    car: null,
+    van: null,
+    bus: null
+  }
+};

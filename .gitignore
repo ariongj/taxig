@@ -1,0 +1,7 @@
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# local-only editor / assistant settings
+.claude/settings.local.json
