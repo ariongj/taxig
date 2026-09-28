@@ -67,6 +67,10 @@
       <stop offset="0.3" stop-color="#ffb85e" stop-opacity="0.38"/>
       <stop offset="1" stop-color="#ff9a4a" stop-opacity="0"/>
     </radialGradient>
+    <radialGradient id="pano-sun-halo"><stop offset="0" stop-color="#ffe6a3" stop-opacity="0.55"/><stop offset="1" stop-color="#ffe6a3" stop-opacity="0"/></radialGradient>
+    <linearGradient id="pano-veil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141a30" stop-opacity="0"/><stop offset="0.3" stop-color="#141a30"/><stop offset="1" stop-color="#141a30"/></linearGradient>
+    <linearGradient id="pano-top-fade" x1="0" y1="0" x2="0" y2="520" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset="0.22" stop-color="#ffffff"/></linearGradient>
+    <mask id="pano-top-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="520"><rect width="1600" height="520" fill="url(#pano-top-fade)"/></mask>
     <linearGradient id="pano-snowcap" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#f4f1f8" stop-opacity="0.95"/>
       <stop offset="0.1" stop-color="#e4e2f0" stop-opacity="0.55"/>
@@ -211,8 +215,10 @@
 
         <g class="pl pl-sky" aria-hidden="true">
           <rect width="1600" height="520" fill="url(#pano-sky)"/>
-          <rect class="pano-sun" width="1600" height="520" fill="url(#pano-sun)"/>
-          <rect class="sky-veil" width="1600" height="520" fill="#141a30"/>
+          <g class="pano-stars"><circle cx="578" cy="78" r="1.0" opacity="0.52"/><circle cx="846" cy="78" r="0.7" opacity="0.52"/><circle cx="905" cy="79" r="1.6" opacity="0.50"/><circle class="tw" style="animation-delay:-2.9s" cx="940" cy="131" r="1.0"/><circle class="tw" style="animation-delay:-3.5s" cx="456" cy="135" r="1.5"/><circle cx="1119" cy="101" r="1.5" opacity="0.90"/><circle cx="673" cy="124" r="0.9" opacity="0.69"/><circle cx="614" cy="141" r="0.7" opacity="0.74"/><circle cx="654" cy="81" r="1.5" opacity="0.74"/><circle cx="501" cy="104" r="0.8" opacity="0.51"/><circle cx="997" cy="162" r="0.6" opacity="0.53"/><circle cx="700" cy="84" r="0.8" opacity="0.84"/><circle cx="503" cy="160" r="1.3" opacity="0.62"/><circle class="tw" style="animation-delay:-3.9s" cx="549" cy="150" r="1.4"/><circle cx="1018" cy="125" r="1.4" opacity="0.75"/><circle cx="459" cy="76" r="0.6" opacity="0.76"/><circle cx="752" cy="77" r="0.9" opacity="0.51"/><circle cx="1020" cy="74" r="0.6" opacity="0.66"/><circle cx="1073" cy="75" r="0.9" opacity="0.49"/><circle class="tw" style="animation-delay:-1.1s" cx="962" cy="78" r="1.0"/><circle cx="458" cy="181" r="1.1" opacity="0.68"/><circle class="tw" style="animation-delay:-1.2s" cx="794" cy="78" r="0.6"/><circle cx="536" cy="75" r="1.4" opacity="0.50"/><circle cx="1263" cy="142" r="1.3" opacity="0.72"/><circle class="tw" style="animation-delay:-2.7s" cx="316" cy="103" r="1.3"/><circle cx="1562" cy="95" r="1.4" opacity="0.89"/><circle class="tw" style="animation-delay:-3.8s" cx="1321" cy="105" r="0.6"/><circle cx="144" cy="130" r="0.7" opacity="0.47"/><circle cx="1554" cy="182" r="1.6" opacity="0.71"/><circle cx="208" cy="113" r="1.3" opacity="0.58"/><circle class="tw" style="animation-delay:-0.5s" cx="257" cy="89" r="1.4"/><circle cx="264" cy="157" r="1.1" opacity="0.66"/><circle class="tw" style="animation-delay:-3.9s" cx="363" cy="148" r="1.0"/><circle cx="220" cy="160" r="0.8" opacity="0.95"/><circle class="tw" style="animation-delay:-2.1s" cx="81" cy="189" r="1.2"/><circle class="tw" style="animation-delay:-3.7s" cx="1169" cy="106" r="1.1"/><circle class="tw" style="animation-delay:-0.6s" cx="322" cy="191" r="1.6"/><circle class="tw" style="animation-delay:-1.3s" cx="108" cy="77" r="1.4"/><circle cx="1501" cy="178" r="1.2" opacity="0.92"/><circle cx="1391" cy="83" r="0.7" opacity="0.88"/><circle cx="408" cy="112" r="0.7" opacity="0.50"/><circle cx="52" cy="126" r="1.5" opacity="0.55"/><circle class="tw" style="animation-delay:-0.6s" cx="1309" cy="152" r="1.4"/><circle cx="1429" cy="173" r="1.0" opacity="0.87"/><circle class="tw" style="animation-delay:-1.8s" cx="1434" cy="81" r="1.0"/><circle class="tw" style="animation-delay:-3.9s" cx="1479" cy="112" r="1.5"/></g>
+          <rect class="pano-sun" width="1600" height="520" fill="url(#pano-sun)" mask="url(#pano-top-mask)"/>
+          <g class="sun-disc" transform="translate(800 300)" opacity="0"><circle r="46" fill="url(#pano-sun-halo)"/><circle class="sun-core" r="14"/></g>
+          <rect class="sky-veil" width="1600" height="520" fill="url(#pano-veil)"/>
         </g>
 
         <g class="pl pl-clouds" aria-hidden="true">
@@ -227,6 +233,22 @@
               <circle r="1.7" fill="#ffffff"/>
               <circle class="plane-blink" cx="4" cy="0.5" r="1.5" fill="#ff5a4f"/>
               <animateMotion dur="44s" begin="-14s" repeatCount="indefinite" path="M1720 66L-160 30"/>
+            </g>
+          </g>
+          <g class="birds">
+            <g>
+              <path class="bird" d="M-6 0Q-3-3.6 0 0Q3-3.6 6 0"/>
+              <path class="bird" d="M10 6Q12.5 3 15 6Q17.5 3 20 6" style="animation-delay:-.35s"/>
+              <path class="bird" d="M-18 8Q-15.5 5-13 8Q-10.5 5-8 8" style="animation-delay:-.6s"/>
+              <path class="bird" d="M24-4Q26-6.4 28-4Q30-6.4 32-4" style="animation-delay:-.15s"/>
+              <path class="bird" d="M-30-2Q-28-4.4-26-2Q-24-4.4-22-2" style="animation-delay:-.8s"/>
+              <animateMotion dur="64s" begin="-8s" repeatCount="indefinite" path="M1720 150C1400 118 1120 168 820 136S300 112-140 148"/>
+            </g>
+          </g>
+          <g class="eagle">
+            <g>
+              <path d="M-15 1C-11-2.6-6.5-3.6-2.2-.6L0 1.2L2.2-.6C6.5-3.6 11-2.6 15 1"/>
+              <animateMotion dur="38s" repeatCount="indefinite" path="M890 104A72 15 0 1 1 1034 104A72 15 0 1 1 890 104Z"/>
             </g>
           </g>
         </g>
@@ -247,15 +269,20 @@
 
         <g class="pl pl-mid">
           <use href="#pano-mid" fill="url(#pano-mid-fill)"/>
-          <use href="#pano-forest-mid" fill="#1b2244"/>
+          <use href="#pano-forest-mid" class="forest-mid" fill="#1b2244"/>
           <use href="#pano-mid-ridge" class="pano-rim-soft"/>
+          <g class="far-lake" aria-hidden="true">
+            <path d="M1262 334C1296 320 1350 316 1420 317C1492 318 1566 314 1640 312V352H1262Z" fill="url(#pano-lake)"/>
+            <g class="pano-shimmer"><path d="M1330 324h26"/><path d="M1396 321h40" style="animation-delay:-1.1s"/><path d="M1486 323h30" style="animation-delay:-2.2s"/><path d="M1560 319h34" style="animation-delay:-.6s"/></g>
+          </g>
+          <a class="spot" href="#booking" data-place="spot.skadar" transform="translate(1420 322)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-2.4s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-16" text-anchor="middle" data-i18n="spot.skadar">Skadarsko jezero</text></a>
           <a class="spot" href="#booking" data-place="spot.hrid" transform="translate(300 300)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-1.3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-1.3s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-16" text-anchor="middle" data-i18n="spot.hrid">Hridsko jezero</text></a>
           <a class="spot" href="#booking" data-place="spot.ropojana" transform="translate(1190 298)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-0.5s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-16" text-anchor="middle" data-i18n="spot.ropojana">Ropojana</text></a>
         </g>
 
         <g class="pl pl-near">
           <use href="#pano-near" fill="url(#pano-near-fill)"/>
-          <use href="#pano-forest-near" fill="#0d1326"/>
+          <use href="#pano-forest-near" class="forest-near" fill="#0d1326"/>
           <rect y="360" width="1600" height="160" fill="url(#pano-valley)"/>
           <use href="#pano-lake-shape" fill="url(#pano-lake)"/>
           <g class="pano-shimmer" aria-hidden="true"><path d="M50 482h54"/><path d="M150 474h80" style="animation-delay:-.8s"/><path d="M272 480h46" style="animation-delay:-1.6s"/><path d="M98 494h70" style="animation-delay:-2.4s"/><path d="M220 491h60" style="animation-delay:-.4s"/><path d="M320 471h34" style="animation-delay:-2s"/><path d="M10 471h40" style="animation-delay:-1.2s"/></g>
@@ -435,7 +462,7 @@
           </div>
           <div class="route-group reveal">
             <h3><svg class="icon"><use href="#i-city"/></svg><span data-i18n="routes.g3.title">Crna Gora</span></h3>
-            <p data-i18n="routes.g3.text">Podgorica · Berane · Kolašin · Budva · Kotor · Bar · Ulcinj</p>
+            <p data-i18n="routes.g3.text">Podgorica · Skadarsko jezero · Berane · Kolašin · Budva · Kotor · Bar · Ulcinj</p>
           </div>
           <div class="route-group reveal">
             <h3><svg class="icon"><use href="#i-route"/></svg><span data-i18n="routes.g4.title">Albanija i Kosovo</span></h3>
@@ -459,7 +486,10 @@
           <rect width="600" height="460" fill="url(#map-dots)"/>
           <g transform="translate(0 20)">
             <path class="map-sea" d="M-10 80 46 113 75 132 105 157 130 182 155 207 179 250 205 265 250 280 244 312 221 339 233 362 221 410 214 450H-10Z"/>
-            <ellipse class="map-sea" cx="186" cy="184" rx="50" ry="11" transform="rotate(36.4 186 184)"/>
+            <g class="map-lake" transform="translate(186 184) rotate(36.4)">
+              <path d="M-54 1C-50-8-37-14-20-14C-4-14 9-11 23-9C35-7 45-6 53-1C47 4 37 7 25 8C11 9-5 12-21 14C-36 15-50 9-54 1Z"/>
+              <text class="map-lake-label" x="-7" y="4" text-anchor="middle" data-i18n="spot.skadar">Skadarsko jezero</text>
+            </g>
             <text class="map-sea-label" x="112" y="302" text-anchor="middle" data-i18n="map.sea">Jadransko more</text>
             <circle cx="297" cy="85" r="150" fill="url(#map-glow)"/>
 
@@ -519,7 +549,7 @@
               <circle class="map-ring" cx="179" cy="250" r="7"/><circle class="map-dot" cx="179" cy="250" r="3.5"/>
               <text class="map-label minor" x="169" y="254" text-anchor="end" data-i18n="map.ulcinj">Ulcinj</text>
               <circle class="map-ring" cx="235" cy="213" r="8"/><circle class="map-dot" cx="235" cy="213" r="4"/>
-              <text class="map-label" x="224" y="218" text-anchor="end" data-i18n="map.shkoder">Skadar</text>
+              <text class="map-label" x="246" y="220" data-i18n="map.shkoder">Skadar</text>
               <circle class="map-ring" cx="286" cy="128" r="7"/><circle class="map-dot" cx="286" cy="128" r="3.5"/>
               <text class="map-label" x="297" y="133">Theth</text>
               <circle class="map-ring" cx="294" cy="406" r="8"/><circle class="map-dot" cx="294" cy="406" r="4"/>
@@ -621,6 +651,7 @@
                 <option data-i18n-value="place.tgd" value="Aerodrom Podgorica (TGD)"></option>
                 <option data-i18n-value="place.tiv" value="Aerodrom Tivat (TIV)"></option>
                 <option data-i18n-value="place.shkoder" value="Skadar"></option>
+                <option data-i18n-value="spot.skadar" value="Skadarsko jezero"></option>
                 <option data-i18n-value="place.theth" value="Theth"></option>
                 <option data-i18n-value="place.valbona" value="Valbona"></option>
                 <option data-i18n-value="place.tirana" value="Tirana"></option>
@@ -638,7 +669,7 @@
                 <input id="f-time" name="time" type="time" required>
                 <p class="field-error" data-error></p>
               </div>
-              <div class="field field-third">
+              <div class="field field-third field-pax">
                 <label for="f-pax" data-i18n="form.pax">Broj putnika</label>
                 <input id="f-pax" name="passengers" type="number" inputmode="numeric" min="1" max="60" value="2" required>
                 <p class="field-error" data-error></p>
@@ -775,7 +806,8 @@
     <div class="cta-bg" aria-hidden="true">
       <svg class="pano pano-cta" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMax slice" focusable="false">
           <rect width="1600" height="520" fill="url(#pano-sky)"/>
-          <rect class="pano-sun" width="1600" height="520" fill="url(#pano-sun)"/>
+          <rect class="pano-sun" width="1600" height="520" fill="url(#pano-sun)" mask="url(#pano-top-mask)"/>
+          <g class="sun-disc" transform="translate(800 300)" opacity="0"><circle r="46" fill="url(#pano-sun-halo)"/><circle class="sun-core" r="14"/></g>
           <g class="pano-cloud c1"><ellipse cx="300" cy="118" rx="190" ry="24" fill="url(#pano-cloud-cool)"/><ellipse cx="380" cy="104" rx="100" ry="20" fill="url(#pano-cloud-cool)"/></g>
           <g class="pano-cloud c2"><ellipse cx="1210" cy="146" rx="230" ry="24" fill="url(#pano-cloud-warm)"/><ellipse cx="1300" cy="132" rx="110" ry="19" fill="url(#pano-cloud-warm)"/></g>
           <g class="pano-cloud c3"><ellipse cx="760" cy="70" rx="160" ry="17" fill="url(#pano-cloud-cool)"/></g>
@@ -783,10 +815,10 @@
           <use href="#pano-far-ridge" class="pano-rim"/>
           <g class="pano-mist"><rect x="-120" y="232" width="1840" height="78" fill="url(#pano-mist)"/></g>
           <use href="#pano-mid" fill="url(#pano-mid-fill)"/>
-          <use href="#pano-forest-mid" fill="#1b2244"/>
+          <use href="#pano-forest-mid" class="forest-mid" fill="#1b2244"/>
           <use href="#pano-mid-ridge" class="pano-rim-soft"/>
           <use href="#pano-near" fill="url(#pano-near-fill)"/>
-          <use href="#pano-forest-near" fill="#0d1326"/>
+          <use href="#pano-forest-near" class="forest-near" fill="#0d1326"/>
           <rect y="360" width="1600" height="160" fill="url(#pano-valley)"/>
           <use href="#pano-lake-shape" fill="url(#pano-lake)"/>
           <g class="pano-shimmer"><path d="M50 482h54"/><path d="M150 474h80" style="animation-delay:-.8s"/><path d="M272 480h46" style="animation-delay:-1.6s"/><path d="M98 494h70" style="animation-delay:-2.4s"/><path d="M220 491h60" style="animation-delay:-.4s"/><path d="M320 471h34" style="animation-delay:-2s"/><path d="M10 471h40" style="animation-delay:-1.2s"/></g>
