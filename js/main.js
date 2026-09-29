@@ -35,6 +35,7 @@
     "form.error.time": "Ovo vrijeme je već prošlo.",
     "form.error.return": "Povratak mora biti nakon polaska.",
     "form.error.vehicle": "Izaberite vozilo.",
+    "form.error.capacity": "Ovo vozilo prima najviše {max} putnika – izaberite veće.",
     "form.error.pax": "Unesite broj putnika (1–60).",
     "form.error.summary": "Molimo popunite označena polja.",
     "form.success.title": "Hvala, {name}!",
@@ -54,7 +55,7 @@
     "wx.rain": "Kiša",
     "wx.snow": "Snijeg",
     "wx.storm": "Grmljavina",
-    "msg.title": "Zahtjev za rezervaciju – Taxi Gusinje",
+    "msg.title": "Zahtjev za rezervaciju – Stemi Travel · Taxi Gusinje",
     "msg.name": "Ime",
     "msg.phone": "Telefon",
     "msg.from": "Polazak",
@@ -66,8 +67,7 @@
     "msg.trip": "Putovanje",
     "msg.return": "Povratak",
     "msg.notes": "Napomene",
-    "msg.footer": "Molim vas, pozovite me da potvrdimo.",
-    "form.error.capacity": "Ovo vozilo prima najviše {max} putnika – izaberite veće."
+    "msg.footer": "Molim vas, pozovite me da potvrdimo."
   };
   var currentLang = 'me';
   var lastSuccess = null;

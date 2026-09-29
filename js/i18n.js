@@ -8,8 +8,8 @@
 window.TG_I18N = {
   /* ------------------------------------------------------ SHQIP */
   sq: {
-    "meta.title": "Taxi Gusinje – Taksi, Kombi 8+1 & Autobus | 24/7",
-    "meta.description": "Taxi Gusinje 24/7 · +382 69 685 205. Veturë, kombi 8+1 dhe autobus nga Gusinja për Plavë, Theth, Shkodër, Tiranë, Podgoricë dhe aeroporte.",
+    "meta.title": "Stemi Travel – Taxi Gusinje · Taksi, kombi 8+1 & autobus 24/7",
+    "meta.description": "Stemi Travel · Taxi Gusinje 24/7 · +382 69 685 205. Veturë, kombi 8+1 dhe autobus nga Gusinja për Plavë, Theth, Shkodër, Tiranë, Podgoricë dhe aeroporte.",
 
     "nav.fleet": "Automjetet",
     "nav.routes": "Destinacionet",
@@ -69,7 +69,7 @@ window.TG_I18N = {
     "fleet.f1": "Klimë në çdo automjet",
     "fleet.f2": "Hapësirë për bagazhe",
     "fleet.f3": "Shoferë me përvojë",
-    "fleet.alt": "Automjetet e Taxi Gusinje: Mercedes E-Class, VW Passat dhe Mercedes Sprinter",
+    "fleet.alt": "Automjetet e Stemi Travel: Mercedes E-Class, VW Passat dhe Mercedes Sprinter",
 
     "plans.kicker": "Shërbimet",
     "plans.title": "Zgjidhni automjetin",
@@ -184,7 +184,7 @@ window.TG_I18N = {
     "form.success.call": "Telefono tani",
     "form.success.again": "Dërgo një kërkesë tjetër",
 
-    "why.title": "Pse Taxi Gusinje?",
+    "why.title": "Pse Stemi Travel?",
     "why.1.title": "Shoferë vendas",
     "why.1.text": "I njohim rrugët e maleve, kufijtë dhe kushtet e motit në çdo stinë.",
     "why.2.title": "24/7, çdo ditë",
@@ -204,7 +204,6 @@ window.TG_I18N = {
     "contact.hours.text": "Hapur 24 orë, 7 ditë në javë",
 
     "footer.tagline": "Udhëtime të sigurta & komode nga Gusinja – ditë e natë.",
-    "footer.part": "Pjesë e",
     "footer.menu": "Menuja",
     "footer.nav": "Lidhjet në fund të faqes",
     "footer.contact": "Kontakt",
@@ -243,7 +242,7 @@ window.TG_I18N = {
     "faq.q6": "A mund të transportoni një grup më të madh?",
     "faq.a6": "Po. Për familje dhe grupe kemi kombi 8+1, ndërsa për grupe më të mëdha autobus. Na tregoni numrin e pasagjerëve dhe datën.",
 
-    "msg.title": "Kërkesë rezervimi – Taxi Gusinje",
+    "msg.title": "Kërkesë rezervimi – Stemi Travel · Taxi Gusinje",
     "msg.name": "Emri",
     "msg.phone": "Telefoni",
     "msg.from": "Nisja",
@@ -260,8 +259,8 @@ window.TG_I18N = {
 
   /* ------------------------------------------------------ CRNOGORSKI */
   me: {
-    "meta.title": "Taxi Gusinje – Taksi, Kombi 8+1 i Autobus | 24/7",
-    "meta.description": "Taxi Gusinje 24/7 · +382 69 685 205. Automobil, kombi 8+1 i autobus iz Gusinja za Plav, Theth, Skadar, Tiranu, Podgoricu i aerodrome.",
+    "meta.title": "Stemi Travel – Taxi Gusinje · Taksi, kombi 8+1 i autobus 24/7",
+    "meta.description": "Stemi Travel · Taxi Gusinje 24/7 · +382 69 685 205. Automobil, kombi 8+1 i autobus iz Gusinja za Plav, Theth, Skadar, Tiranu, Podgoricu i aerodrome.",
 
     "nav.fleet": "Vozila",
     "nav.routes": "Destinacije",
@@ -321,7 +320,7 @@ window.TG_I18N = {
     "fleet.f1": "Klima u svakom vozilu",
     "fleet.f2": "Prostor za prtljag",
     "fleet.f3": "Iskusni vozači",
-    "fleet.alt": "Vozila Taxi Gusinje: Mercedes E-klasa, VW Passat i Mercedes Sprinter",
+    "fleet.alt": "Vozila Stemi Travel: Mercedes E-klasa, VW Passat i Mercedes Sprinter",
 
     "plans.kicker": "Usluge",
     "plans.title": "Izaberite vozilo",
@@ -436,7 +435,7 @@ window.TG_I18N = {
     "form.success.call": "Pozovi odmah",
     "form.success.again": "Pošalji novi zahtjev",
 
-    "why.title": "Zašto Taxi Gusinje?",
+    "why.title": "Zašto Stemi Travel?",
     "why.1.title": "Lokalni vozači",
     "why.1.text": "Poznajemo planinske puteve, granične prelaze i vremenske uslove u svakom godišnjem dobu.",
     "why.2.title": "24/7, svakog dana",
@@ -456,7 +455,6 @@ window.TG_I18N = {
     "contact.hours.text": "Otvoreno 24 časa, 7 dana u nedjelji",
 
     "footer.tagline": "Sigurna i udobna putovanja iz Gusinja – danju i noću.",
-    "footer.part": "U sastavu",
     "footer.menu": "Meni",
     "footer.nav": "Linkovi u podnožju",
     "footer.contact": "Kontakt",
@@ -495,7 +493,7 @@ window.TG_I18N = {
     "faq.q6": "Možete li prevesti veću grupu?",
     "faq.a6": "Da. Za porodice i grupe imamo kombi 8+1, a za veće grupe autobus. Javite nam broj putnika i datum.",
 
-    "msg.title": "Zahtjev za rezervaciju – Taxi Gusinje",
+    "msg.title": "Zahtjev za rezervaciju – Stemi Travel · Taxi Gusinje",
     "msg.name": "Ime",
     "msg.phone": "Telefon",
     "msg.from": "Polazak",
@@ -512,8 +510,8 @@ window.TG_I18N = {
 
   /* ------------------------------------------------------ ENGLISH */
   en: {
-    "meta.title": "Taxi Gusinje – Taxi, Minivan 8+1 & Bus Transfers | 24/7",
-    "meta.description": "Taxi Gusinje 24/7 · +382 69 685 205. Car, minivan 8+1 and bus from Gusinje to Plav, Theth, Shkodër, Tirana, Podgorica and the airports.",
+    "meta.title": "Stemi Travel – Taxi Gusinje · Taxi, minivan 8+1 & bus 24/7",
+    "meta.description": "Stemi Travel · Taxi Gusinje 24/7 · +382 69 685 205. Car, minivan 8+1 and bus from Gusinje to Plav, Theth, Shkodër, Tirana, Podgorica and the airports.",
 
     "nav.fleet": "Fleet",
     "nav.routes": "Destinations",
@@ -573,7 +571,7 @@ window.TG_I18N = {
     "fleet.f1": "Air conditioning in every vehicle",
     "fleet.f2": "Room for luggage",
     "fleet.f3": "Experienced drivers",
-    "fleet.alt": "Taxi Gusinje vehicles: Mercedes E-Class, VW Passat and Mercedes Sprinter",
+    "fleet.alt": "Stemi Travel vehicles: Mercedes E-Class, VW Passat and Mercedes Sprinter",
 
     "plans.kicker": "Services",
     "plans.title": "Choose your vehicle",
@@ -688,7 +686,7 @@ window.TG_I18N = {
     "form.success.call": "Call now",
     "form.success.again": "Send another request",
 
-    "why.title": "Why Taxi Gusinje?",
+    "why.title": "Why Stemi Travel?",
     "why.1.title": "Local drivers",
     "why.1.text": "We know the mountain roads, the border crossings and the weather in every season.",
     "why.2.title": "24/7, every day",
@@ -708,7 +706,6 @@ window.TG_I18N = {
     "contact.hours.text": "Open 24 hours, 7 days a week",
 
     "footer.tagline": "Safe & comfortable journeys from Gusinje – day and night.",
-    "footer.part": "Part of",
     "footer.menu": "Menu",
     "footer.nav": "Footer links",
     "footer.contact": "Contact",
@@ -747,7 +744,7 @@ window.TG_I18N = {
     "faq.q6": "Can you transport a larger group?",
     "faq.a6": "Yes. For families and groups we have the 8+1 minivan, and a bus for larger groups. Tell us the number of passengers and the date.",
 
-    "msg.title": "Booking request – Taxi Gusinje",
+    "msg.title": "Booking request – Stemi Travel · Taxi Gusinje",
     "msg.name": "Name",
     "msg.phone": "Phone",
     "msg.from": "Pickup",

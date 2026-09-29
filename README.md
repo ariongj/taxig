@@ -1,6 +1,8 @@
-# Taxi Gusinje – website
+# Stemi Travel · Taxi Gusinje – website
 
-A static one-page website for **Taxi Gusinje** (part of **Stemi Travel**) in three languages (Shqip / Crnogorski / English).
+A static one-page website for **Stemi Travel** and its taxi service **Taxi Gusinje**, in three languages
+(Shqip / Crnogorski / English). Stemi Travel is the main name (its "S" road logo in the header and footer);
+Taxi Gusinje sits underneath as the service, with the mountain mark from the flyer.
 Night navy and taxi yellow like the printed flyer. The **service is in front** (vehicles, booking, phone);
 behind it lives an animated panorama of the whole region with clickable destination hotspots, lit for
 the real time of day in Gusinje (day, sunset, night).
