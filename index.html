@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Taxi Gusinje – Taksi, Kombi 8+1 i Autobus | 24/7</title>
-  <meta name="description" content="Taxi Gusinje: sigurna i udobna putovanja iz Gusinja za Plav, Vusanje, Skadar, Theth, Tiranu, Podgoricu i aerodrome. Automobil, kombi 8+1 i autobus. Rezervacija telefonom 24/7.">
+  <meta name="description" content="Taxi Gusinje 24/7 · +382 69 685 205. Automobil, kombi 8+1 i autobus iz Gusinja za Plav, Theth, Skadar, Tiranu, Podgoricu i aerodrome.">
   <meta name="theme-color" content="#0a0e17">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
@@ -15,6 +15,8 @@
   <link rel="alternate" hreflang="x-default" href="https://ariongj.github.io/taxig/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sr_ME">
+  <meta property="og:locale:alternate" content="sq_AL">
+  <meta property="og:locale:alternate" content="en_US">
   <meta property="og:title" content="Taxi Gusinje – Sigurna i udobna putovanja, 24/7">
   <meta property="og:description" content="Automobil, kombi 8+1 i autobus iz Gusinja za Plav, Skadar, Theth, Tiranu, Podgoricu i aerodrome. Rezervacija telefonom 24/7.">
   <meta property="og:url" content="https://ariongj.github.io/taxig/">
@@ -31,24 +33,73 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TaxiService",
-    "name": "Taxi Gusinje",
-    "telephone": "+38269685205",
-    "description": "Taxi, minivan 8+1 and bus transfers from Gusinje to Plav, Vusanje, Shkodër, Theth, Tirana, Podgorica and airports. 24/7 booking by phone.",
-    "areaServed": ["Gusinje", "Plav", "Vusanje", "Podgorica", "Shkodër", "Theth", "Tirana"],
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Taxi Gusinje",
-      "telephone": "+38269685205",
-      "address": { "@type": "PostalAddress", "addressLocality": "Gusinje", "postalCode": "84325", "addressCountry": "ME" },
-      "geo": { "@type": "GeoCoordinates", "latitude": 42.5622, "longitude": 19.8342 },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "00:00",
-        "closes": "23:59"
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://ariongj.github.io/taxig/#business",
+        "name": "Taxi Gusinje",
+        "url": "https://ariongj.github.io/taxig/",
+        "image": "https://ariongj.github.io/taxig/assets/og-image.jpg",
+        "telephone": "+38269685205",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Gusinje",
+          "postalCode": "84326",
+          "addressCountry": "ME"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 42.5622,
+          "longitude": 19.8342
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        },
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Stemi Travel"
+        },
+        "areaServed": [
+          "Gusinje",
+          "Plav",
+          "Vusanje",
+          "Podgorica",
+          "Shkodër",
+          "Theth",
+          "Valbona",
+          "Tirana"
+        ]
+      },
+      {
+        "@type": "TaxiService",
+        "name": "Taxi Gusinje",
+        "description": "Taxi, minivan 8+1 and bus transfers from Gusinje to Plav, Vusanje, Shkodër, Theth, Tirana, Podgorica and airports. 24/7 booking by phone.",
+        "provider": {
+          "@id": "https://ariongj.github.io/taxig/#business"
+        },
+        "areaServed": [
+          "Gusinje",
+          "Plav",
+          "Vusanje",
+          "Podgorica",
+          "Shkodër",
+          "Theth",
+          "Valbona",
+          "Tirana"
+        ]
       }
-    }
+    ]
   }
   </script>
 </head>
@@ -127,7 +178,6 @@
     <path id="pano-mid" d="M0 298 13.8 296.4 27.5 295.9 41.2 292.4 55 290.2 68.8 289.1 82.5 287.6 96.2 287.5 110 286 125 289.7 140 292.7 155 294.5 170 296.2 185 295.8 200 294.3 215 293.6 230 294 245 292.9 260 292.7 275 290.8 290 287.7 305 283.9 320 279.5 335 278.4 350 276 365 276.6 380 277 395 276.7 410 275.5 425 279.6 440 283.1 455 286.1 470 290 485 286.6 500 282.7 515 280.5 530 278.8 545 277.4 560 275.3 575 272.9 590 272 603.8 273.9 617.5 275.8 631.2 277.8 645 280.7 658.8 279.9 672.5 280.2 686.2 281.6 700 284 715 281.7 730 278.4 745 273 760 268.3 775 266.3 790 265.8 805 267.4 820 268 835 271.7 850 275.2 865 279.2 880 282.6 895 283.5 910 283.4 925 283.4 940 282 955 281.1 970 281.3 985 278.9 1000 277.8 1015 273.2 1030 268.9 1045 264.8 1060 262 1075 265.1 1090 267 1105 271.4 1120 276 1135 275.3 1150 275.3 1165 276.5 1180 278 1195 274.8 1210 272.5 1225 271.6 1240 271.1 1255 268.8 1270 266.4 1285 266.8 1300 266 1315 270.8 1330 275.3 1345 277.8 1360 281.3 1375 280.7 1390 279.9 1405 280.6 1420 282 1432.5 280.5 1445 279.3 1457.5 277.9 1470 276.2 1482.5 276.1 1495 275.9 1507.5 273.6 1520 272 1530 272.3 1540 273.1 1550 272.7 1560 271.6 1570 273.7 1580 276.4 1590 278.7 1600 280 V520 H0Z"/>
     <path id="pano-mid-ridge" d="M0 298 13.8 296.4 27.5 295.9 41.2 292.4 55 290.2 68.8 289.1 82.5 287.6 96.2 287.5 110 286 125 289.7 140 292.7 155 294.5 170 296.2 185 295.8 200 294.3 215 293.6 230 294 245 292.9 260 292.7 275 290.8 290 287.7 305 283.9 320 279.5 335 278.4 350 276 365 276.6 380 277 395 276.7 410 275.5 425 279.6 440 283.1 455 286.1 470 290 485 286.6 500 282.7 515 280.5 530 278.8 545 277.4 560 275.3 575 272.9 590 272 603.8 273.9 617.5 275.8 631.2 277.8 645 280.7 658.8 279.9 672.5 280.2 686.2 281.6 700 284 715 281.7 730 278.4 745 273 760 268.3 775 266.3 790 265.8 805 267.4 820 268 835 271.7 850 275.2 865 279.2 880 282.6 895 283.5 910 283.4 925 283.4 940 282 955 281.1 970 281.3 985 278.9 1000 277.8 1015 273.2 1030 268.9 1045 264.8 1060 262 1075 265.1 1090 267 1105 271.4 1120 276 1135 275.3 1150 275.3 1165 276.5 1180 278 1195 274.8 1210 272.5 1225 271.6 1240 271.1 1255 268.8 1270 266.4 1285 266.8 1300 266 1315 270.8 1330 275.3 1345 277.8 1360 281.3 1375 280.7 1390 279.9 1405 280.6 1420 282 1432.5 280.5 1445 279.3 1457.5 277.9 1470 276.2 1482.5 276.1 1495 275.9 1507.5 273.6 1520 272 1530 272.3 1540 273.1 1550 272.7 1560 271.6 1570 273.7 1580 276.4 1590 278.7 1600 280"/>
     <path id="pano-near" d="M0 350 18.8 348.2 37.5 347.4 56.2 345.2 75 342.5 93.8 342.7 112.5 342 131.2 341 150 340 167.5 340.7 185 341.5 202.5 344.2 220 346.2 237.5 346.1 255 345.7 272.5 347.2 290 348 306.2 347.9 322.5 347.7 338.8 346.5 355 344.8 371.2 341.6 387.5 338.2 403.8 336.1 420 334 437.5 334.9 455 336 472.5 335.7 490 335.6 507.5 338.2 525 340.7 542.5 342.3 560 344 577.5 342.7 595 341.3 612.5 340.2 630 338.7 647.5 336.1 665 334.4 682.5 333.5 700 332 718.8 332 737.5 332.9 756.2 333.3 775 333.2 793.8 335.6 812.5 337.6 831.2 339.5 850 342 867.5 339.4 885 336.2 902.5 334.4 920 333.2 937.5 332.8 955 333.3 972.5 331.8 990 330 1008.8 333 1027.5 335.5 1046.2 338.5 1065 341.4 1083.8 341.9 1102.5 341.7 1121.2 341.4 1140 342 1158.8 340.1 1177.5 338.8 1196.2 336.8 1215 335.2 1233.8 334.3 1252.5 333.1 1271.2 332.4 1290 332 1308.8 332.8 1327.5 334.3 1346.2 335.3 1365 336.6 1383.8 338.3 1402.5 339.5 1421.2 342.3 1440 344 1460 342.1 1480 341 1500 340.7 1520 340 1540 339.2 1560 338 1580 337.3 1600 336 V520 H0Z"/>
-    <path id="pano-near-ridge" d="M0 350 18.8 348.2 37.5 347.4 56.2 345.2 75 342.5 93.8 342.7 112.5 342 131.2 341 150 340 167.5 340.7 185 341.5 202.5 344.2 220 346.2 237.5 346.1 255 345.7 272.5 347.2 290 348 306.2 347.9 322.5 347.7 338.8 346.5 355 344.8 371.2 341.6 387.5 338.2 403.8 336.1 420 334 437.5 334.9 455 336 472.5 335.7 490 335.6 507.5 338.2 525 340.7 542.5 342.3 560 344 577.5 342.7 595 341.3 612.5 340.2 630 338.7 647.5 336.1 665 334.4 682.5 333.5 700 332 718.8 332 737.5 332.9 756.2 333.3 775 333.2 793.8 335.6 812.5 337.6 831.2 339.5 850 342 867.5 339.4 885 336.2 902.5 334.4 920 333.2 937.5 332.8 955 333.3 972.5 331.8 990 330 1008.8 333 1027.5 335.5 1046.2 338.5 1065 341.4 1083.8 341.9 1102.5 341.7 1121.2 341.4 1140 342 1158.8 340.1 1177.5 338.8 1196.2 336.8 1215 335.2 1233.8 334.3 1252.5 333.1 1271.2 332.4 1290 332 1308.8 332.8 1327.5 334.3 1346.2 335.3 1365 336.6 1383.8 338.3 1402.5 339.5 1421.2 342.3 1440 344 1460 342.1 1480 341 1500 340.7 1520 340 1540 339.2 1560 338 1580 337.3 1600 336"/>
     <path id="pano-forest-mid" d="M-2.3 300L0 289.1L2.3 300ZM5 299.2L6.5 291.5L8.1 299.2ZM52.3 292.2L54.8 281.5L57.3 292.2ZM62 291.5L63.2 285.8L64.4 291.5ZM70.5 290.7L72.1 283.9L73.8 290.7ZM79.3 289.7L81.7 279.7L84.2 289.7ZM85.6 289.6L87.7 278.5L89.7 289.6ZM92.4 289.5L94.3 279L96.2 289.5ZM101.7 288.6L104.1 276.7L106.5 288.6ZM108.7 288.2L110.9 276.4L113.1 288.2ZM116.7 290.1L118.8 281.5L120.9 290.1ZM123.8 291.7L125.2 285.6L126.6 291.7ZM129.2 292.9L131.1 285L133 292.9ZM136 294.3L138.1 282.8L140.2 294.3ZM144.8 295.4L146.1 289L147.3 295.4ZM150.7 296.1L151.8 290.7L152.8 296.1ZM158.1 297.1L160.2 286.2L162.3 297.1ZM167.3 298.1L168.4 292.7L169.6 298.1ZM173.2 298.1L174.5 290.8L175.8 298.1ZM181.9 297.8L183.6 288.5L185.4 297.8ZM191.2 296.9L193.3 285.5L195.5 296.9ZM200.4 296.2L202.5 286.9L204.7 296.2ZM208.4 295.8L210.6 285.7L212.8 295.8ZM213.1 295.6L215.7 283.9L218.4 295.6ZM223.6 295.9L225 289.4L226.3 295.9ZM295.7 287.6L298.1 276.6L300.6 287.6ZM302.1 286.1L304.4 274.6L306.6 286.1ZM312.1 283.5L313.2 277.6L314.4 283.5ZM386.4 278.8L387.6 272.5L388.7 278.8ZM394.1 278.7L395.2 273.4L396.3 278.7ZM401.3 278.1L402.8 271.7L404.2 278.1ZM406.8 277.6L408.6 268.3L410.3 277.6ZM416.3 279.6L417.7 272.9L419.2 279.6ZM426.1 282.2L427.6 275L429.1 282.2ZM434.3 284.3L436.7 274.5L439.1 284.3ZM441.7 285.7L443.4 276.9L445 285.7ZM449 287.3L451.4 276.2L453.7 287.3ZM456.2 288.8L457.9 280.4L459.5 288.8ZM463.2 290.6L464.6 283.1L466.1 290.6ZM467.6 292L469.9 281.7L472.3 292ZM474.3 290.7L475.7 283.7L477.2 290.7ZM481.6 288.8L484.1 277.1L486.6 288.8ZM489.6 287L491.3 279.8L493 287ZM495.1 285.6L496.5 279.4L497.9 285.6ZM504.7 283.9L505.8 278.2L506.9 283.9ZM511.8 282.6L514.2 271.8L516.7 282.6ZM520.2 281.8L521.4 275.5L522.7 281.8ZM527.9 280.8L529.5 273.6L531.1 280.8ZM537.2 279.9L539.2 269.3L541.3 279.9ZM545.9 279L547.3 271.3L548.8 279ZM555.9 277.7L557 272.5L558.1 277.7ZM564.8 276.3L566.2 269.6L567.5 276.3ZM571.7 275.1L573.5 267.7L575.3 275.1ZM578.2 274.7L579.1 269.6L580 274.7ZM582.8 274.3L585.3 263.2L587.9 274.3ZM589.7 274.3L591.9 263.5L594.1 274.3ZM597.4 275.3L599.5 264.1L601.6 275.3ZM603.3 276.2L606 264.3L608.6 276.2ZM613.3 277.4L614.7 270.2L616.1 277.4ZM617.7 278.2L620.3 267.2L622.9 278.2ZM626.3 279.4L628.9 268.3L631.6 279.4ZM635.8 281.1L637.6 272.7L639.4 281.1ZM645.4 282.6L647.6 270.6L649.8 282.6ZM652.3 282.1L654.4 271.6L656.5 282.1ZM660.2 282L662.4 270.3L664.7 282ZM668.7 282.2L671.2 270.3L673.8 282.2ZM678.9 283L680.1 276.7L681.2 283ZM683.2 283.6L685.9 272.3L688.6 283.6ZM759 270.1L761.6 258.4L764.2 270.1ZM765.7 269.4L767.2 261.2L768.7 269.4ZM772.5 268.3L774.8 256.6L777.2 268.3ZM779.1 268.1L780.2 263L781.4 268.1ZM785.6 267.9L787.5 257.7L789.3 267.9ZM793.7 268.3L795.1 261L796.4 268.3ZM798.6 268.8L800.1 261.3L801.6 268.8ZM805.2 269.4L806.4 263.7L807.5 269.4ZM811.1 269.7L812.8 262L814.4 269.7ZM882.5 284.8L883.8 278.8L885.1 284.8ZM890.4 285.3L891.9 277.1L893.4 285.3ZM900.4 285.4L901.6 279.7L902.8 285.4ZM936.2 284.2L938.1 276.2L940 284.2ZM944 283.6L946.1 272.7L948.2 283.6ZM952.6 283.1L955.1 272.4L957.5 283.1ZM962.7 283.2L965 272.5L967.3 283.2ZM972.8 282.5L974.9 273.5L977.1 282.5ZM981.6 281.1L983.5 272.8L985.4 281.1ZM988.9 280.5L990.1 274.7L991.3 280.5ZM993.9 280.1L995.7 272L997.5 280.1ZM1000.5 279.2L1002 272.8L1003.6 279.2ZM1005.6 277.4L1007.7 269L1009.7 277.4ZM1011.2 275.8L1013 268.4L1014.8 275.8ZM1020.2 273.2L1022.1 264.9L1023.9 273.2ZM1026.6 271.5L1027.7 265.7L1028.8 271.5ZM1035.9 268.9L1037.3 261.7L1038.6 268.9ZM1040.8 267.6L1042.4 258.8L1043.9 267.6ZM1050.2 265.6L1051.4 260.4L1052.5 265.6ZM1055.5 264.5L1057.3 256.5L1059.2 264.5ZM1062 264.7L1063.4 257.4L1064.8 264.7ZM1070.6 266.6L1072.8 256.3L1075.1 266.6ZM1075.7 267.5L1077.9 256.2L1080.1 267.5ZM1081.9 268.2L1083.4 261.1L1084.8 268.2ZM1086.6 268.8L1088.4 258.9L1090.3 268.8ZM1095.7 271.4L1098 260.2L1100.3 271.4ZM1103.1 273.2L1104.4 267.4L1105.7 273.2ZM1107.9 274.9L1110 265.5L1112.1 274.9ZM1116.8 277.5L1118.4 269.2L1120 277.5ZM1124 277.7L1125.3 271.4L1126.5 277.7ZM1131.2 277.4L1132.4 271.8L1133.5 277.4ZM1139.2 277.3L1141.6 265.8L1144 277.3ZM1144.9 277.3L1147.2 267.8L1149.5 277.3ZM1152.6 277.7L1154.7 266.9L1156.7 277.7ZM1157.6 278.1L1159.9 266.8L1162.3 278.1ZM1166 278.7L1167.7 270.6L1169.3 278.7ZM1171 279.3L1172.8 270.6L1174.6 279.3ZM1181.6 279.4L1182.6 274.1L1183.6 279.4ZM1186.6 278.2L1188.4 268.5L1190.3 278.2ZM1196.2 276.3L1198.4 267.4L1200.6 276.3ZM1204.1 275.1L1206 266.5L1207.8 275.1ZM1210 274.4L1211.2 268.6L1212.4 274.4ZM1219.4 273.8L1220.7 267.7L1222 273.8ZM1223.9 273.5L1225.9 263.6L1227.9 273.5ZM1230.8 273.4L1232.5 266L1234.1 273.4ZM1240 272.9L1241.5 265L1242.9 272.9ZM1247.5 271.7L1249.2 262L1251 271.7ZM1256.3 270.3L1257.6 264.3L1258.9 270.3ZM1261.8 269.3L1264.5 257.9L1267.2 269.3ZM1271.2 268.5L1272.5 261.5L1273.9 268.5ZM1276.5 268.6L1278.3 260.2L1280.2 268.6ZM1287 268.6L1288 263.5L1289.1 268.6ZM1294.6 268.2L1296.8 257.2L1298.9 268.2ZM1301.1 268.8L1302.6 262.9L1304 268.8ZM1306.7 270.9L1309.2 259.1L1311.7 270.9ZM1365 283L1366.7 273.7L1368.4 283ZM1369.6 282.8L1372.2 271.6L1374.7 282.8ZM1377.9 282.5L1379.1 276.7L1380.3 282.5ZM1385.1 282L1387 271.5L1389 282ZM1395.4 282.2L1396.8 275.3L1398.2 282.2ZM1401 282.5L1403.3 271L1405.7 282.5ZM1407.8 283.1L1410.3 271.5L1412.7 283.1ZM1413.9 283.6L1415.9 273L1417.9 283.6ZM1419.9 283.8L1421.3 277.1L1422.8 283.8ZM1425.5 283L1428 271.6L1430.4 283ZM1435.3 282L1437.2 273.7L1439.2 282ZM1440.4 281.5L1442.5 272.8L1444.6 281.5ZM1448.9 280.7L1450.2 275.6L1451.4 280.7ZM1457.9 279.7L1459.4 272.4L1461 279.7ZM1463.8 278.8L1465.8 268.9L1467.8 278.8ZM1473.5 278.2L1475.4 269.2L1477.3 278.2ZM1519.7 274L1521.5 266.4L1523.3 274ZM1526.5 274.2L1528.6 264L1530.8 274.2ZM1535.5 274.8L1536.8 268.3L1538.1 274.8ZM1544.4 274.9L1545.8 269.4L1547.2 274.9ZM1552.3 274.3L1554.5 263.1L1556.7 274.3ZM1559 273.9L1561.1 263.1L1563.1 273.9ZM1564.4 275L1566.5 265.4L1568.7 275ZM1572.9 276.7L1573.8 271.3L1574.8 276.7ZM1577.5 278.1L1579.1 269.6L1580.6 278.1ZM1583 279.5L1584.9 270.3L1586.7 279.5ZM1588.6 280.7L1590.4 270.9L1592.3 280.7ZM1592.9 281.4L1595.7 270.1L1598.5 281.4Z"/>
     <path id="pano-forest-near" d="M-4.2 353L-1.4 343.8L-2.7 343.8L0 334.5L2.7 343.8L1.4 343.8L4.2 353ZM3.2 352.4L5.1 345.7L4.2 345.7L6.1 339L8 345.7L7.1 345.7L9 352.4ZM13.4 351.4L15.7 343.9L14.6 343.9L16.9 336.3L19.3 343.9L18.2 343.9L20.5 351.4ZM23.5 350.9L26.4 338.8L29.3 350.9ZM80.9 345.6L82.5 336.6L84.1 345.6ZM90 345.7L92.7 332.9L95.4 345.7ZM98.4 345.4L101 334.2L103.6 345.4ZM106.7 345.1L108.8 335.4L110.8 345.1ZM114.9 344.7L117.2 335.3L119.6 344.7ZM120.6 344.4L122.7 336.8L121.7 336.8L123.8 329.2L125.9 336.8L124.9 336.8L127 344.4ZM129.3 343.9L132.3 334.2L130.9 334.2L133.8 324.5L136.8 334.2L135.4 334.2L138.4 343.9ZM135.6 343.6L138.2 334.3L137 334.3L139.6 325.1L142.2 334.3L140.9 334.3L143.5 343.6ZM141.8 343.2L145.1 332.8L143.5 332.8L146.9 322.5L150.2 332.8L148.6 332.8L152 343.2ZM150.9 343.2L153.9 333.1L152.4 333.1L155.5 323L158.5 333.1L157 333.1L160.1 343.2ZM161.5 343.6L164.1 334L162.8 334L165.4 324.4L168 334L166.7 334L169.3 343.6ZM172.6 344L174.8 335L177 344ZM179.8 344.5L182.2 335.7L181 335.7L183.4 326.9L185.8 335.7L184.6 335.7L187 344.5ZM227.9 349.2L229.9 341L228.9 341L231 332.9L233.1 341L232.1 341L234.1 349.2ZM236.8 349.1L238.9 341.2L237.9 341.2L240 333.3L242.1 341.2L241.1 341.2L243.2 349.1ZM246.2 348.8L248.7 339.8L247.5 339.8L250 330.8L252.4 339.8L251.3 339.8L253.7 348.8ZM253 348.7L255.5 338.4L257.9 348.7ZM263.8 349.7L265.5 342.8L264.7 342.8L266.4 336L268.1 342.8L267.3 342.8L269 349.7ZM273.8 350.3L276.4 339L279 350.3ZM280.7 350.7L283.3 340.3L282 340.3L284.6 329.9L287.3 340.3L286 340.3L288.6 350.7ZM287.6 351L289.8 344.2L288.7 344.2L290.9 337.5L293.1 344.2L292.1 344.2L294.3 351ZM294.9 350.9L296.9 344L296 344L298 337.1L300 344L299 344L301.1 350.9ZM306.2 350.8L308.8 339.3L311.3 350.8ZM313 350.8L315.1 342.3L317.1 350.8ZM320.7 350.4L324.1 340L322.4 340L325.8 329.5L329.2 340L327.6 340L330.9 350.4ZM329.2 349.9L331.9 341.1L330.6 341.1L333.4 332.2L336.1 341.1L334.8 341.1L337.6 349.9ZM335.7 349.5L337.9 342.6L336.8 342.6L339 335.7L341.1 342.6L340.1 342.6L342.2 349.5ZM340.9 348.9L343.3 340.8L342.1 340.8L344.5 332.7L346.8 340.8L345.7 340.8L348 348.9ZM347.9 348.3L350.2 338.7L352.5 348.3ZM359 346.6L361.1 338L363.2 346.6ZM365 345L367.7 335.5L366.4 335.5L369.2 325.9L371.9 335.5L370.6 335.5L373.4 345ZM371.2 343.6L374.3 333.6L372.8 333.6L375.9 323.6L379 333.6L377.5 333.6L380.6 343.6ZM381.1 341.7L383.8 332.8L382.5 332.8L385.1 323.9L387.8 332.8L386.5 332.8L389.1 341.7ZM442.3 338.5L444.7 330.5L443.5 330.5L446 322.6L448.5 330.5L447.3 330.5L449.8 338.5ZM450.1 338.9L452.5 330.6L451.3 330.6L453.7 322.3L456.1 330.6L454.9 330.6L457.3 338.9ZM455.2 338.9L457.7 330.2L456.5 330.2L458.9 321.5L461.4 330.2L460.2 330.2L462.6 338.9ZM466 338.7L468.6 328.1L471.2 338.7ZM472.6 338.7L474.3 330.5L476 338.7ZM482.2 338.6L484.4 328.4L486.6 338.6ZM487.7 338.8L489.8 330.2L488.8 330.2L490.9 321.7L493 330.2L492 330.2L494 338.8ZM498.5 340.1L500.2 331.8L501.9 340.1ZM500.9 340.9L504 330.4L502.5 330.4L505.6 319.9L508.6 330.4L507.1 330.4L510.2 340.9ZM561.7 346.7L563.7 338.1L565.8 346.7ZM571 346L572.7 339.5L571.9 339.5L573.5 332.9L575.2 339.5L574.4 339.5L576 346ZM580.1 345.3L582.2 338.2L581.2 338.2L583.3 331.2L585.4 338.2L584.4 338.2L586.4 345.3ZM588.8 344.5L591.4 336.3L590.1 336.3L592.7 328.2L595.3 336.3L594 336.3L596.6 344.5ZM629.7 341.1L632.7 330.8L631.3 330.8L634.2 320.6L637.2 330.8L635.8 330.8L638.8 341.1ZM640.5 339.6L642.8 330.7L641.7 330.7L644 321.8L646.4 330.7L645.3 330.7L647.6 339.6ZM716.7 335L718.6 325.7L720.5 335ZM723.9 335.4L726.4 326.2L725.2 326.2L727.7 317L730.3 326.2L729 326.2L731.6 335.4ZM730.4 335.8L733.4 326.2L732 326.2L735 316.7L738 326.2L736.5 326.2L739.5 335.8ZM742.9 336.1L745.4 324.7L747.8 336.1ZM748.9 336.2L751 329.5L749.9 329.5L752.1 322.7L754.2 329.5L753.2 329.5L755.3 336.2ZM755.1 336.3L757.7 324.2L760.2 336.3ZM761.2 336.3L763.4 325L765.6 336.3ZM876.3 340.2L878.4 332.7L877.4 332.7L879.5 325.2L881.6 332.7L880.6 332.7L882.7 340.2ZM915.9 336.3L918 327.1L920.2 336.3ZM952.5 336.2L954.8 329.1L953.7 329.1L956 322L958.3 329.1L957.2 329.1L959.5 336.2ZM963.3 335.3L965.6 325.7L964.5 325.7L966.8 316.1L969.2 325.7L968.1 325.7L970.4 335.3ZM971 334.7L973 324.7L975.1 334.7ZM977.1 334L979 327L978.1 327L980 320L981.9 327L980.9 327L982.8 334ZM985.9 333.1L988.1 324.2L987 324.2L989.2 315.3L991.3 324.2L990.3 324.2L992.5 333.1ZM993.2 334.3L996.5 323.9L994.9 323.9L998.2 313.5L1001.5 323.9L999.9 323.9L1003.2 334.3ZM1004.6 336L1007.2 327.1L1006 327.1L1008.6 318.3L1011.2 327.1L1009.9 327.1L1012.5 336ZM1014.9 337.3L1017.3 328.8L1016.1 328.8L1018.5 320.3L1020.9 328.8L1019.8 328.8L1022.2 337.3ZM1021.6 338.2L1024.1 329.7L1022.9 329.7L1025.4 321.1L1028 329.7L1026.7 329.7L1029.3 338.2ZM1031.9 339.5L1033.8 331.4L1035.8 339.5ZM1040.4 341.3L1043.2 332.4L1041.8 332.4L1044.6 323.5L1047.4 332.4L1046.1 332.4L1048.9 341.3ZM1047.6 342.3L1050.1 333.5L1048.9 333.5L1051.4 324.7L1053.9 333.5L1052.7 333.5L1055.2 342.3ZM1053.3 343.1L1055.4 336.5L1054.4 336.5L1056.5 330L1058.6 336.5L1057.6 336.5L1059.6 343.1ZM1064.4 344.4L1066.9 331.9L1069.3 344.4ZM1072 344.6L1074 335.7L1076 344.6ZM1079.2 344.9L1082 333.5L1084.9 344.9ZM1089.1 344.8L1091.6 334.4L1090.4 334.4L1093 323.9L1095.5 334.4L1094.3 334.4L1096.8 344.8ZM1099.3 344.7L1101.8 335.7L1100.6 335.7L1103.1 326.6L1105.6 335.7L1104.4 335.7L1106.8 344.7ZM1110.9 344.6L1113.2 335.3L1115.4 344.6ZM1118 344.4L1120.3 337L1119.2 337L1121.5 329.6L1123.8 337L1122.7 337L1125 344.4ZM1126.8 344.7L1129.1 336.7L1128 336.7L1130.2 328.7L1132.5 336.7L1131.4 336.7L1133.6 344.7ZM1137.1 345L1139.2 337.3L1138.2 337.3L1140.2 329.6L1142.3 337.3L1141.3 337.3L1143.4 345ZM1147.8 343.9L1150.6 332.6L1153.3 343.9ZM1154.1 343.3L1156.9 331.2L1159.7 343.3ZM1160.9 342.6L1163.8 333L1162.4 333L1165.2 323.3L1168.1 333L1166.7 333L1169.5 342.6ZM1167.8 342.2L1169.9 333.9L1168.8 333.9L1171 325.5L1173.1 333.9L1172 333.9L1174.1 342.2ZM1177.4 341.5L1179.5 333.3L1181.5 341.5ZM1186.5 340.5L1188.7 332.1L1187.6 332.1L1189.8 323.7L1191.9 332.1L1190.9 332.1L1193.1 340.5ZM1191.3 339.8L1194.1 329.4L1192.8 329.4L1195.5 318.9L1198.3 329.4L1196.9 329.4L1199.7 339.8ZM1202.3 339.1L1204.2 329.2L1206.1 339.1ZM1207.8 338.6L1210 328L1212.2 338.6ZM1216.3 338L1218.5 327.6L1220.7 338ZM1224.4 337.6L1227.2 325.7L1230 337.6ZM1229.6 337.3L1232.3 329L1231 329L1233.7 320.7L1236.4 329L1235.1 329L1237.8 337.3ZM1237.4 336.8L1240.4 327.1L1239 327.1L1242 317.4L1245.1 327.1L1243.6 327.1L1246.7 336.8ZM1249 336.2L1250.9 329.3L1249.9 329.3L1251.8 322.4L1253.7 329.3L1252.8 329.3L1254.7 336.2ZM1322.2 337L1323.8 328.6L1325.4 337ZM1329.6 337.6L1332.1 329L1330.9 329L1333.3 320.3L1335.8 329L1334.6 329L1337 337.6ZM1338.5 338L1341.1 326.2L1343.7 338ZM1347.3 338.6L1349.4 330.9L1348.4 330.9L1350.4 323.2L1352.5 330.9L1351.5 330.9L1353.6 338.6ZM1353.7 339.1L1356.9 329.4L1355.4 329.4L1358.6 319.6L1361.8 329.4L1360.2 329.4L1363.4 339.1ZM1362.8 339.5L1364.8 331.1L1366.7 339.5ZM1368.3 340.1L1370.7 328.2L1373.2 340.1ZM1374.8 340.8L1377.5 331.6L1376.2 331.6L1378.9 322.3L1381.6 331.6L1380.3 331.6L1383 340.8ZM1420.1 345.4L1422.6 334.3L1425 345.4ZM1425.8 346L1427.6 339.1L1426.7 339.1L1428.5 332.3L1430.2 339.1L1429.4 339.1L1431.2 346ZM1432.8 346.7L1435.3 336.9L1434.1 336.9L1436.5 327L1439 336.9L1437.8 336.9L1440.3 346.7ZM1439.1 346.8L1441.8 335.7L1444.5 346.8ZM1446 346.2L1448 337.5L1449.9 346.2ZM1451.9 345.6L1454.8 333.7L1457.7 345.6ZM1461.7 344.8L1464.9 332.2L1468 344.8ZM1467 344.5L1469.9 335.9L1468.5 335.9L1471.3 327.3L1474.2 335.9L1472.8 335.9L1475.6 344.5ZM1476.8 344L1479.1 336.7L1478 336.7L1480.2 329.3L1482.5 336.7L1481.4 336.7L1483.7 344ZM1483.2 343.9L1485.7 335.1L1484.5 335.1L1486.9 326.4L1489.4 335.1L1488.2 335.1L1490.6 343.9ZM1493.3 343.8L1495.4 336.4L1494.4 336.4L1496.5 329L1498.6 336.4L1497.6 336.4L1499.7 343.8ZM1500.9 343.6L1503.1 332.3L1505.2 343.6ZM1506.1 343.4L1508.5 335.4L1507.4 335.4L1509.8 327.4L1512.2 335.4L1511 335.4L1513.4 343.4ZM1513.2 343.1L1516.2 333L1514.8 333L1517.8 322.9L1520.9 333L1519.4 333L1522.4 343.1ZM1520.5 342.8L1523.2 334.3L1521.9 334.3L1524.6 325.7L1527.2 334.3L1525.9 334.3L1528.6 342.8ZM1525.8 342.6L1529 332.4L1527.4 332.4L1530.7 322.2L1533.9 332.4L1532.3 332.4L1535.6 342.6ZM1535.9 342.3L1537.9 335L1536.9 335L1539 327.7L1541.1 335L1540.1 335L1542.1 342.3ZM1544.7 341.7L1547.1 333.5L1545.9 333.5L1548.3 325.3L1550.6 333.5L1549.5 333.5L1551.9 341.7ZM1549.8 341.4L1552.8 332L1551.4 332L1554.3 322.7L1557.3 332L1555.9 332L1558.9 341.4ZM1561.2 340.9L1563.3 332.3L1562.3 332.3L1564.4 323.8L1566.5 332.3L1565.5 332.3L1567.6 340.9ZM1565.8 340.7L1568.5 332.3L1567.2 332.3L1569.9 323.9L1572.6 332.3L1571.3 332.3L1574.1 340.7Z"/>
     <path id="pano-road" d="M-20 470C120 456 300 446 440 440S700 418 820 408S1250 390 1480 398L1640 412"/>
@@ -139,6 +189,7 @@
   <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
   <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/><path d="M4.14 15.08c2.62-1.57 5.24-1.43 7.86.42 2.74 1.94 5.49 2 8.23.19"/></symbol>
   <symbol id="i-city" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l6-4v18"/><path d="M19 21V11l-8-4"/><path d="M8 9v.01M8 12v.01M8 15v.01M8 18v.01M15 14v.01M15 17v.01"/></symbol>
+  <symbol id="logo-stemi" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#101a2e" stroke="#ffd000" stroke-width="2"/><path d="M21.2 9.6C18.2 7.4 12.4 8.2 12.5 12.2C12.6 16.1 20.6 15 20.6 19.6C20.6 23.9 14.8 24.6 11.2 22.4" fill="none" stroke="#eef2f8" stroke-width="3.6" stroke-linecap="round"/><path d="M21.2 9.6C18.2 7.4 12.4 8.2 12.5 12.2C12.6 16.1 20.6 15 20.6 19.6C20.6 23.9 14.8 24.6 11.2 22.4" fill="none" stroke="#101a2e" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="1.5 1.6"/></symbol>
   <symbol id="i-wx-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
   <symbol id="i-wx-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
   <symbol id="i-wx-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></symbol>
@@ -165,11 +216,14 @@
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
 </svg>
 
-<header class="site-header" id="top">
+<header class="site-header">
   <div class="container nav">
-    <a class="brand" href="#top" aria-label="Taxi Gusinje">
+    <a class="brand" href="#top" aria-label="Taxi Gusinje – Stemi Travel">
       <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#ffd000"/><path d="M6.5 28.5 15 13.5l4.6 7.6 3.6-4.6 10.3 12z" fill="#0a0e17"/><path d="M13.2 16.7 15 13.5l1.9 3.1-1.1-.5-.8.8-.8-.8z" fill="#ffd000"/><path d="M8 33.5h24" stroke="#0a0e17" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="4.2 3.4"/></svg>
-      <span class="brand-word"><span class="w-taxi">TAXI</span><span class="w-city">GUSINJE</span></span>
+      <span class="brand-text">
+        <span class="brand-word"><span class="w-taxi">TAXI</span><span class="w-city">GUSINJE</span></span>
+        <span class="brand-by"><svg class="brand-by-mark" aria-hidden="true" focusable="false"><use href="#logo-stemi"/></svg>Stemi Travel</span>
+      </span>
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Meni" data-i18n-aria="nav.menu">
       <a href="#fleet" data-i18n="nav.fleet">Vozila</a>
@@ -184,18 +238,76 @@
         <button type="button" data-lang="sq" aria-pressed="false" title="Shqip">SQ</button>
         <button type="button" data-lang="en" aria-pressed="false" title="English">EN</button>
       </div>
-      <a class="btn btn-primary btn-sm nav-call" href="tel:+38269685205" data-link="tel"><svg class="icon"><use href="#i-phone"/></svg><span data-phone-text>+382 69 685 205</span></a>
+      <a class="btn btn-primary btn-sm nav-call" href="tel:+38269685205" data-link="tel"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span data-phone-text>+382 69 685 205</span></a>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Meni" data-i18n-aria="nav.menu">
-        <svg class="icon icon-menu"><use href="#i-menu"/></svg>
-        <svg class="icon icon-close"><use href="#i-close"/></svg>
+        <svg class="icon icon-menu" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+        <svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#i-close"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<main>
+<main id="top">
   <!-- HERO: the service in front, simple mountains + hotspots behind -->
   <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-chips">
+          <p class="status"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.status">Na usluzi 24/7 · Gusinje, Crna Gora</span></p>
+          <p class="live-chip">
+            <span class="sr-only" data-i18n="live.label">Sada u Gusinju:</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span id="live-time">--:--</span>
+            <span class="live-wx" id="live-wx" hidden><svg class="icon" aria-hidden="true"><use href="#i-wx-cloud"/></svg><span id="live-temp"></span><span class="live-desc" id="live-desc"></span></span>
+          </p>
+        </div>
+        <h1 class="hero-title" data-i18n-html="hero.title">Taksi i transferi <span>širom regiona</span></h1>
+        <p class="hero-lead" data-i18n="hero.lead">Sigurna i udobna putovanja automobilom, kombijem 8+1 ili autobusom – Gusinje, Plav, Vusanje, Theth, Valbona, Podgorica, Skadar, Tirana i svi aerodromi.</p>
+
+        <div class="tiles">
+          <button type="button" class="tile" data-choose-vehicle="car">
+            <span class="tile-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span>
+            <span class="tile-text"><strong data-i18n="plans.car.name">Automobil</strong><small>1–4 <span data-i18n="plans.pax">putnika</span></small></span>
+          </button>
+          <button type="button" class="tile" data-choose-vehicle="van">
+            <span class="tile-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-van"/></svg></span>
+            <span class="tile-text"><strong data-i18n="plans.van.name">Kombi 8+1</strong><small>5–8 <span data-i18n="plans.pax">putnika</span></small></span>
+          </button>
+          <button type="button" class="tile" data-choose-vehicle="bus">
+            <span class="tile-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bus"/></svg></span>
+            <span class="tile-text"><strong data-i18n="plans.bus.name">Autobus</strong><small>9+ <span data-i18n="plans.pax">putnika</span></small></span>
+          </button>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#booking"><span data-i18n="hero.cta.book">Rezervišite sada</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-glass btn-lg" href="tel:+38269685205" data-link="tel"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span data-i18n="hero.cta.call">Pozovite nas</span></a>
+        </div>
+      </div>
+
+      <aside class="svc-card">
+        <span class="svc-tag" data-i18n="svc.tag">Na usluzi smo vam!</span>
+        <div class="fleet-shot">
+          <img src="assets/fleet.jpg" width="521" height="172" decoding="async" alt="Vozila Taxi Gusinje: Mercedes E-klasa, VW Passat i Mercedes Sprinter" data-i18n-alt="fleet.alt">
+          <button type="button" class="hs" style="--x:24%;--y:58%" data-choose-vehicle="car"><span class="hs-dot" aria-hidden="true"></span><span class="hs-chip"><span class="hs-brand">Mercedes </span>E-Class</span></button>
+          <button type="button" class="hs" style="--x:55%;--y:58%" data-choose-vehicle="car"><span class="hs-dot" aria-hidden="true"></span><span class="hs-chip"><span class="hs-brand">VW </span>Passat</span></button>
+          <button type="button" class="hs" style="--x:82%;--y:40%" data-choose-vehicle="van"><span class="hs-dot" aria-hidden="true"></span><span class="hs-chip"><span class="hs-brand">Mercedes </span>Sprinter</span></button>
+        </div>
+        <div class="svc-body">
+          <div class="svc-phone">
+            <span class="ring">24/7</span>
+            <div>
+              <p class="svc-label" data-i18n="svc.label">Rezervacija telefonom</p>
+              <a class="svc-number" href="tel:+38269685205" data-link="tel"><span data-phone-text>+382 69 685 205</span></a>
+            </div>
+          </div>
+          <div class="svc-actions">
+            <a class="btn btn-whatsapp" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg><span data-i18n="card.whatsapp">WhatsApp</span></a>
+            <a class="btn btn-viber" href="viber://chat?number=%2B38269685205" data-link="viber"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-viber"/></svg><span data-i18n="card.viber">Viber</span></a>
+          </div>
+          <p class="svc-note" data-i18n="card.note">Vlasnik vam uzvraća poziv da potvrdi cijenu i vrijeme.</p>
+        </div>
+      </aside>
+    </div>
     <div class="hero-bg">
       <svg class="hero-stars" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
         <defs>
@@ -262,8 +374,8 @@
           <use href="#pano-far" fill="url(#pano-far-fill)"/>
           <use href="#pano-far" class="snowcap" fill="url(#pano-snowcap)"/>
           <use href="#pano-far-ridge" class="pano-rim"/>
-          <text class="peak-label" x="796" y="112" text-anchor="middle" data-i18n="peak.karanfili">Karanfili</text>
-          <text class="peak-label peak-rosit" x="1122" y="136" text-anchor="middle" data-i18n="peak.rosit">Maja Rosit</text>
+          <text class="peak-label" x="796" y="112" text-anchor="middle" aria-hidden="true" data-i18n="peak.karanfili">Karanfili</text>
+          <text class="peak-label peak-rosit" x="1122" y="136" text-anchor="middle" aria-hidden="true" data-i18n="peak.rosit">Maja Rosit</text>
           <a class="spot" href="#booking" data-place="spot.valbona" transform="translate(560 214)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-1.9s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-1.9s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-16" text-anchor="middle" data-i18n="spot.valbona">Valbona</text></a>
           <a class="spot" href="#booking" data-place="spot.theth" transform="translate(1000 214)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-2.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-2.2s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-16" text-anchor="middle" data-i18n="spot.theth">Theth</text></a>
         </g>
@@ -305,8 +417,8 @@
             <g class="pano-car"><circle r="9" fill="url(#pano-taxi-glow)"/><circle r="2.3" fill="#ffe46b"/><animateMotion dur="13s" begin="-4s" repeatCount="indefinite" keyPoints="0;1;1;0;0" keyTimes="0;0.42;0.5;0.92;1" calcMode="linear" path="M820 408C900 396 990 386 1080 366"/></g>
             <g class="pano-car"><circle r="8" fill="url(#pano-car-glow)"/><circle r="2" fill="#fffaf0"/><animateMotion dur="16s" begin="-7s" repeatCount="indefinite" keyPoints="0;1;1;0;0" keyTimes="0;0.4;0.5;0.9;1" calcMode="linear" path="M820 408C806 390 786 370 760 352"/></g>
           </g>
-          <text class="road-sign" x="16" y="452" data-i18n="road.east">← Podgorica · Aerodrom</text>
-          <text class="road-sign" x="1588" y="438" text-anchor="end" data-i18n="road.west">Skadar · Tirana →</text>
+          <text class="road-sign" x="56" y="452" aria-hidden="true" data-i18n="road.east">← Podgorica · Aerodrom</text>
+          <text class="road-sign" x="1544" y="438" text-anchor="end" aria-hidden="true" data-i18n="road.west">Skadar · Tirana →</text>
           <a class="spot" href="#booking" data-place="spot.lake" transform="translate(185 486)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-0.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-0.4s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="26" text-anchor="middle" data-i18n="spot.lake">Plavsko jezero</text></a>
           <a class="spot" href="#booking" data-place="spot.plav" transform="translate(440 440)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-1.1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-1.1s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-22" text-anchor="middle" data-i18n="spot.plav">Plav</text></a>
           <a class="spot" href="#booking" data-place="spot.grebaje" transform="translate(760 352)"><circle class="spot-hit" r="20"/><circle class="spot-pulse" r="5"><animate attributeName="r" values="5;18" dur="2.6s" begin="-0.7s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.85;0" dur="2.6s" begin="-0.7s" repeatCount="indefinite"/></circle><circle class="spot-dot" r="5"/><text class="spot-label" y="-18" text-anchor="middle" data-i18n="spot.grebaje">Grebaje</text></a>
@@ -319,65 +431,7 @@
         <rect class="wx-flash" width="1600" height="520" fill="#dfe8ff" aria-hidden="true"/>
       </svg>
       </div>
-      <p class="pano-hint"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span class="hint-tap" data-i18n="hero.hint">Dodirnite mjesto da ga izaberete kao odredište</span><span class="hint-swipe" data-i18n="hero.hint.swipe">Prevucite lijevo-desno i dodirnite mjesto</span></p>
-    </div>
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-chips">
-          <p class="status"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero.status">Na usluzi 24/7 · Gusinje, Crna Gora</span></p>
-          <p class="live-chip">
-            <span class="sr-only" data-i18n="live.label">Sada u Gusinju:</span>
-            <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span id="live-time">--:--</span>
-            <span class="live-wx" id="live-wx" hidden><svg class="icon" aria-hidden="true"><use href="#i-wx-cloud"/></svg><span id="live-temp"></span><span class="live-desc" id="live-desc"></span></span>
-          </p>
-        </div>
-        <h1 class="hero-title" data-i18n-html="hero.title">Taksi i transferi <span>širom regiona</span></h1>
-        <p class="hero-lead" data-i18n="hero.lead">Sigurna i udobna putovanja automobilom, kombijem 8+1 ili autobusom – Gusinje, Plav, Vusanje, Theth, Valbona, Podgorica, Skadar, Tirana i svi aerodromi.</p>
-
-        <div class="tiles">
-          <button type="button" class="tile" data-choose-vehicle="car">
-            <span class="tile-icon"><svg class="icon"><use href="#i-car"/></svg></span>
-            <span class="tile-text"><strong data-i18n="plans.car.name">Automobil</strong><small>1–4 <span data-i18n="plans.pax">putnika</span></small></span>
-          </button>
-          <button type="button" class="tile" data-choose-vehicle="van">
-            <span class="tile-icon"><svg class="icon"><use href="#i-van"/></svg></span>
-            <span class="tile-text"><strong data-i18n="plans.van.name">Kombi 8+1</strong><small>5–8 <span data-i18n="plans.pax">putnika</span></small></span>
-          </button>
-          <button type="button" class="tile" data-choose-vehicle="bus">
-            <span class="tile-icon"><svg class="icon"><use href="#i-bus"/></svg></span>
-            <span class="tile-text"><strong data-i18n="plans.bus.name">Autobus</strong><small>9+ <span data-i18n="plans.pax">putnika</span></small></span>
-          </button>
-        </div>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="#booking"><span data-i18n="hero.cta.book">Rezervišite sada</span><svg class="icon"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-glass btn-lg" href="tel:+38269685205" data-link="tel"><svg class="icon"><use href="#i-phone"/></svg><span data-i18n="hero.cta.call">Pozovite nas</span></a>
-        </div>
-      </div>
-
-      <aside class="svc-card">
-        <span class="svc-tag" data-i18n="svc.tag">Na usluzi smo vam!</span>
-        <div class="fleet-shot">
-          <img src="assets/fleet.jpg" width="521" height="172" decoding="async" alt="Vozila Taxi Gusinje: Mercedes E-klasa, VW Passat i Mercedes Sprinter" data-i18n-alt="fleet.alt">
-          <button type="button" class="hs" style="--x:24%;--y:58%" data-choose-vehicle="car"><span class="hs-dot" aria-hidden="true"></span><span class="hs-chip"><span class="hs-brand">Mercedes </span>E-Class</span></button>
-          <button type="button" class="hs" style="--x:55%;--y:58%" data-choose-vehicle="car"><span class="hs-dot" aria-hidden="true"></span><span class="hs-chip"><span class="hs-brand">VW </span>Passat</span></button>
-          <button type="button" class="hs" style="--x:82%;--y:40%" data-choose-vehicle="van"><span class="hs-dot" aria-hidden="true"></span><span class="hs-chip"><span class="hs-brand">Mercedes </span>Sprinter</span></button>
-        </div>
-        <div class="svc-body">
-          <div class="svc-phone">
-            <span class="ring">24/7</span>
-            <div>
-              <p class="svc-label" data-i18n="svc.label">Rezervacija telefonom</p>
-              <a class="svc-number" href="tel:+38269685205" data-link="tel"><span data-phone-text>+382 69 685 205</span></a>
-            </div>
-          </div>
-          <div class="svc-actions">
-            <a class="btn btn-whatsapp" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span data-i18n="card.whatsapp">WhatsApp</span></a>
-            <a class="btn btn-viber" href="viber://chat?number=%2B38269685205" data-link="viber"><svg class="icon"><use href="#i-viber"/></svg><span data-i18n="card.viber">Viber</span></a>
-          </div>
-          <p class="svc-note" data-i18n="card.note">Vlasnik vam uzvraća poziv da potvrdi cijenu i vrijeme.</p>
-        </div>
-      </aside>
+      <p class="pano-hint"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span class="hint-tap" data-i18n="hero.hint">Izaberite mjesto kao odredište</span><span class="hint-swipe" data-i18n="hero.hint.swipe">Prevucite lijevo-desno i dodirnite mjesto</span></p>
     </div>
   </section>
 
@@ -389,59 +443,59 @@
         <h2 class="h2" data-i18n="plans.title">Izaberite vozilo</h2>
         <p class="lead" data-i18n="plans.lead">Fiksna cijena se potvrđuje telefonom prije polaska – bez skrivenih troškova.</p>
         <ul class="facts">
-          <li><svg class="icon"><use href="#i-snow"/></svg><span data-i18n="fleet.f1">Klima u svakom vozilu</span></li>
-          <li><svg class="icon"><use href="#i-luggage"/></svg><span data-i18n="fleet.f2">Prostor za prtljag</span></li>
-          <li><svg class="icon"><use href="#i-shield"/></svg><span data-i18n="fleet.f3">Iskusni vozači</span></li>
+          <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-snow"/></svg><span data-i18n="fleet.f1">Klima u svakom vozilu</span></li>
+          <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-luggage"/></svg><span data-i18n="fleet.f2">Prostor za prtljag</span></li>
+          <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span data-i18n="fleet.f3">Iskusni vozači</span></li>
         </ul>
       </div>
 
       <div class="plans">
         <article class="plan reveal" data-plan="car">
-          <span class="plan-icon"><svg class="icon"><use href="#i-car"/></svg></span>
+          <span class="plan-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span>
           <h3 class="plan-name" data-i18n="plans.car.name">Automobil</h3>
           <p class="plan-tag" data-i18n="plans.car.tag">Za individualna putovanja</p>
           <p class="plan-cap"><strong>1–4</strong><span data-i18n="plans.pax">putnika</span></p>
           <ul class="plan-features">
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.car.f1">Mercedes E-klasa ili VW Passat</span></li>
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.car.f2">Do 3 velika kofera</span></li>
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.car.f3">Idealno za aerodromske transfere i poslovna putovanja</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.car.f1">Mercedes E-klasa ili VW Passat</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.car.f2">Do 3 velika kofera</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.car.f3">Idealno za aerodromske transfere i poslovna putovanja</span></li>
           </ul>
           <div class="plan-foot">
             <p class="plan-price"><strong data-price="car">Cijena na upit</strong><span data-i18n="plans.price.note">Fiksna cijena, potvrđena telefonom</span></p>
-            <button type="button" class="btn btn-ghost btn-block" data-choose-vehicle="car"><span data-i18n="plans.cta">Zatraži ponudu</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+            <button type="button" class="btn btn-ghost btn-block" data-choose-vehicle="car"><span data-i18n="plans.cta">Zatraži ponudu</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
           </div>
         </article>
 
         <article class="plan is-featured reveal" data-plan="van">
           <span class="plan-badge" data-i18n="plans.popular">Najtraženije</span>
-          <span class="plan-icon"><svg class="icon"><use href="#i-van"/></svg></span>
+          <span class="plan-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-van"/></svg></span>
           <h3 class="plan-name" data-i18n="plans.van.name">Kombi 8+1</h3>
           <p class="plan-tag" data-i18n="plans.van.tag">Za porodice i grupe</p>
           <p class="plan-cap"><strong>5–8</strong><span data-i18n="plans.pax">putnika</span></p>
           <ul class="plan-features">
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.van.f1">Mercedes Sprinter</span></li>
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.van.f2">Puno prostora za prtljag</span></li>
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.van.f3">Idealno za porodice i grupe prijatelja</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.van.f1">Mercedes Sprinter</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.van.f2">Puno prostora za prtljag</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.van.f3">Idealno za porodice i grupe prijatelja</span></li>
           </ul>
           <div class="plan-foot">
             <p class="plan-price"><strong data-price="van">Cijena na upit</strong><span data-i18n="plans.price.note">Fiksna cijena, potvrđena telefonom</span></p>
-            <button type="button" class="btn btn-primary btn-block" data-choose-vehicle="van"><span data-i18n="plans.cta">Zatraži ponudu</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+            <button type="button" class="btn btn-primary btn-block" data-choose-vehicle="van"><span data-i18n="plans.cta">Zatraži ponudu</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
           </div>
         </article>
 
         <article class="plan reveal" data-plan="bus">
-          <span class="plan-icon"><svg class="icon"><use href="#i-bus"/></svg></span>
+          <span class="plan-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bus"/></svg></span>
           <h3 class="plan-name" data-i18n="plans.bus.name">Autobus</h3>
           <p class="plan-tag" data-i18n="plans.bus.tag">Za velike grupe</p>
           <p class="plan-cap"><strong>9+</strong><span data-i18n="plans.pax">putnika</span></p>
           <ul class="plan-features">
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.bus.f1">Za grupe veće od 8 osoba</span></li>
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.bus.f2">Izleti, ture i događaji</span></li>
-            <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="plans.bus.f3">Kapacitet i cijena prema grupi</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.bus.f1">Za grupe veće od 8 osoba</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.bus.f2">Izleti, ture i događaji</span></li>
+            <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span data-i18n="plans.bus.f3">Kapacitet i cijena prema grupi</span></li>
           </ul>
           <div class="plan-foot">
             <p class="plan-price"><strong data-price="bus">Cijena na upit</strong><span data-i18n="plans.price.note">Fiksna cijena, potvrđena telefonom</span></p>
-            <button type="button" class="btn btn-ghost btn-block" data-choose-vehicle="bus"><span data-i18n="plans.cta">Zatraži ponudu</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+            <button type="button" class="btn btn-ghost btn-block" data-choose-vehicle="bus"><span data-i18n="plans.cta">Zatraži ponudu</span><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
           </div>
         </article>
       </div>
@@ -459,23 +513,23 @@
         </div>
         <div class="route-groups">
           <div class="route-group reveal">
-            <h3><svg class="icon"><use href="#i-pin"/></svg><span data-i18n="routes.g1.title">Lokalno</span></h3>
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><span data-i18n="routes.g1.title">Lokalno</span></h3>
             <p data-i18n="routes.g1.text">Gusinje · Plav · Vusanje · Grebaje · Vermoš</p>
           </div>
           <div class="route-group reveal">
-            <h3><svg class="icon"><use href="#i-plane"/></svg><span data-i18n="routes.g2.title">Aerodromi</span></h3>
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plane"/></svg><span data-i18n="routes.g2.title">Aerodromi</span></h3>
             <p data-i18n="routes.g2.text">Podgorica (TGD) · Tivat (TIV) · Tirana (TIA) · Priština (PRN)</p>
           </div>
           <div class="route-group reveal">
-            <h3><svg class="icon"><use href="#i-city"/></svg><span data-i18n="routes.g3.title">Crna Gora</span></h3>
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-city"/></svg><span data-i18n="routes.g3.title">Crna Gora</span></h3>
             <p data-i18n="routes.g3.text">Podgorica · Skadarsko jezero · Berane · Kolašin · Budva · Kotor · Bar · Ulcinj</p>
           </div>
           <div class="route-group reveal">
-            <h3><svg class="icon"><use href="#i-route"/></svg><span data-i18n="routes.g4.title">Albanija i Kosovo</span></h3>
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-route"/></svg><span data-i18n="routes.g4.title">Albanija i Kosovo</span></h3>
             <p data-i18n="routes.g4.text">Skadar · Theth · Tirana · Drač · Peć · Priština · Prizren</p>
           </div>
           <div class="route-group route-group-wide reveal">
-            <h3><svg class="icon"><use href="#i-users"/></svg><span data-i18n="routes.g5.title">Grupe i događaji</span></h3>
+            <h3><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span data-i18n="routes.g5.title">Grupe i događaji</span></h3>
             <p data-i18n="routes.g5.text">Svadbe, izleti, sportske ekipe i turističke grupe – kombijem ili autobusom.</p>
           </div>
         </div>
@@ -609,7 +663,7 @@
           <p data-i18n="how.s3.text">Sigurna i udobna vožnja do odredišta. Bez plaćanja online.</p>
         </li>
       </ol>
-      <span class="steps-taxi" aria-hidden="true"><svg class="icon"><use href="#i-car"/></svg></span>
+      <span class="steps-taxi" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-car"/></svg></span>
       </div>
     </div>
   </section>
@@ -634,8 +688,8 @@
               </div>
               <div class="field">
                 <label for="f-phone" data-i18n="form.phone">Broj telefona</label>
-                <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+382 69 000 000" data-i18n-placeholder="form.phone.ph">
-                <p class="field-hint" data-i18n="form.phone.hint">Sa pozivnim brojem države (+382, +381, +387…). Na ovaj broj vas zovemo.</p>
+                <input id="f-phone" name="phone" type="tel" aria-describedby="phone-hint" inputmode="tel" autocomplete="tel" required placeholder="+382 69 000 000" data-i18n-placeholder="form.phone.ph">
+                <p class="field-hint" id="phone-hint" data-i18n="form.phone.hint">Sa pozivnim brojem države (+382, +381, +387…). Na ovaj broj vas zovemo.</p>
                 <p class="field-error" data-error></p>
               </div>
               <div class="field">
@@ -658,6 +712,20 @@
                 <option data-i18n-value="place.tiv" value="Aerodrom Tivat (TIV)"></option>
                 <option data-i18n-value="place.shkoder" value="Skadar"></option>
                 <option data-i18n-value="spot.skadar" value="Skadarsko jezero"></option>
+                <option data-i18n-value="spot.alipasha" value="Alipašini izvori"></option>
+                <option data-i18n-value="spot.lake" value="Plavsko jezero"></option>
+                <option data-i18n-value="spot.hrid" value="Hridsko jezero"></option>
+                <option data-i18n-value="spot.ropojana" value="Ropojana"></option>
+                <option data-i18n-value="spot.vermosh" value="Vermoš"></option>
+                <option data-i18n-value="place.berane" value="Berane"></option>
+                <option data-i18n-value="map.kolasin" value="Kolašin"></option>
+                <option data-i18n-value="place.budva" value="Budva"></option>
+                <option data-i18n-value="place.kotor" value="Kotor"></option>
+                <option data-i18n-value="map.bar" value="Bar"></option>
+                <option data-i18n-value="map.ulcinj" value="Ulcinj"></option>
+                <option data-i18n-value="map.durres" value="Drač"></option>
+                <option data-i18n-value="map.peja" value="Peć"></option>
+                <option data-i18n-value="place.prizren" value="Prizren"></option>
                 <option data-i18n-value="place.theth" value="Theth"></option>
                 <option data-i18n-value="place.valbona" value="Valbona"></option>
                 <option data-i18n-value="place.tirana" value="Tirana"></option>
@@ -685,23 +753,23 @@
                 <legend data-i18n="form.vehicle">Vozilo</legend>
                 <div class="vehicle-options">
                   <label class="vehicle-option">
-                    <input type="radio" name="vehicle" value="car">
+                    <input type="radio" name="vehicle" value="car" required>
                     <span class="vehicle-option-body">
-                      <svg class="icon"><use href="#i-car"/></svg>
+                      <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-car"/></svg>
                       <span class="vehicle-option-text"><span class="vehicle-option-name" data-i18n="form.vehicle.car">Automobil</span><span class="vehicle-option-sub" data-i18n="form.vehicle.car.sub">do 4 osobe</span></span>
                     </span>
                   </label>
                   <label class="vehicle-option">
-                    <input type="radio" name="vehicle" value="van">
+                    <input type="radio" name="vehicle" value="van" required>
                     <span class="vehicle-option-body">
-                      <svg class="icon"><use href="#i-van"/></svg>
+                      <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-van"/></svg>
                       <span class="vehicle-option-text"><span class="vehicle-option-name" data-i18n="form.vehicle.van">Kombi 8+1</span><span class="vehicle-option-sub" data-i18n="form.vehicle.van.sub">do 8 osoba</span></span>
                     </span>
                   </label>
                   <label class="vehicle-option">
-                    <input type="radio" name="vehicle" value="bus">
+                    <input type="radio" name="vehicle" value="bus" required>
                     <span class="vehicle-option-body">
-                      <svg class="icon"><use href="#i-bus"/></svg>
+                      <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bus"/></svg>
                       <span class="vehicle-option-text"><span class="vehicle-option-name" data-i18n="form.vehicle.bus">Autobus</span><span class="vehicle-option-sub" data-i18n="form.vehicle.bus.sub">velike grupe</span></span>
                     </span>
                   </label>
@@ -717,6 +785,19 @@
                 </div>
               </fieldset>
 
+              <div class="field-return" id="return-fields" hidden>
+                <div class="field field-half">
+                  <label for="f-rdate" data-i18n="form.return.date">Datum povratka</label>
+                  <input id="f-rdate" name="rdate" type="date">
+                  <p class="field-error" data-error></p>
+                </div>
+                <div class="field field-half">
+                  <label for="f-rtime" data-i18n="form.return.time">Vrijeme povratka</label>
+                  <input id="f-rtime" name="rtime" type="time">
+                  <p class="field-error" data-error></p>
+                </div>
+              </div>
+
               <div class="field field-full">
                 <label for="f-notes" data-i18n="form.notes">Napomene (opciono)</label>
                 <textarea id="f-notes" name="notes" rows="4" placeholder="Broj leta, dodatni prtljag, dječje sjedište, usputna stajanja…" data-i18n-placeholder="form.notes.ph"></textarea>
@@ -726,21 +807,22 @@
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-lg"><svg class="icon"><use href="#i-send"/></svg><span data-i18n="form.submit">Pošalji zahtjev</span></button>
+              <button type="submit" class="btn btn-primary btn-lg"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"/></svg><span data-i18n="form.submit">Pošalji zahtjev</span></button>
               <p class="form-hint" id="submit-hint">Zahtjev se otvara u WhatsApp-u – pritisnite „Pošalji“. Zatim vas zovemo da potvrdimo.</p>
-              <p class="form-error-summary" id="form-error-summary" hidden data-i18n="form.error.summary">Molimo popunite označena polja.</p>
+              <p class="form-hint form-privacy" data-i18n="form.privacy">Vaše podatke koristimo samo da potvrdimo ovu vožnju i ne dijelimo ih ni sa kim.</p>
+              <p class="form-error-summary" id="form-error-summary" role="alert" hidden data-i18n="form.error.summary">Molimo popunite označena polja.</p>
             </div>
           </form>
 
           <div id="booking-success" class="booking-success" hidden aria-live="polite">
-            <div class="success-icon"><svg class="icon"><use href="#i-check"/></svg></div>
-            <h3 id="success-title">Hvala!</h3>
+            <div class="success-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></div>
+            <h3 id="success-title" tabindex="-1">Hvala!</h3>
             <p id="success-text"></p>
             <p class="success-alt" data-i18n="form.success.alt">WhatsApp se nije otvorio? Pošaljite zahtjev na drugi način:</p>
             <div class="success-actions">
-              <a id="success-wa" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span data-i18n="form.success.openwa">Otvori u WhatsApp-u</span></a>
-              <a id="success-sms" class="btn btn-ghost" href="#"><svg class="icon"><use href="#i-sms"/></svg><span data-i18n="form.success.sms">Pošalji SMS-om</span></a>
-              <a id="success-call" class="btn btn-ghost" href="tel:+38269685205" data-link="tel"><svg class="icon"><use href="#i-phone"/></svg><span data-i18n="form.success.call">Pozovi odmah</span></a>
+              <a id="success-wa" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg><span data-i18n="form.success.openwa">Otvori u WhatsApp-u</span></a>
+              <a id="success-sms" class="btn btn-ghost" href="#"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-sms"/></svg><span data-i18n="form.success.sms">Pošalji SMS-om</span></a>
+              <a id="success-call" class="btn btn-ghost" href="tel:+38269685205" data-link="tel"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span data-i18n="form.success.call">Pozovi odmah</span></a>
             </div>
             <button type="button" id="success-again" class="link-btn" data-i18n="form.success.again">Pošalji novi zahtjev</button>
           </div>
@@ -750,18 +832,18 @@
           <div class="card why reveal">
             <h3 data-i18n="why.title">Zašto Taxi Gusinje?</h3>
             <ul class="why-list">
-              <li><span class="fact-icon"><svg class="icon"><use href="#i-mountain"/></svg></span><div><strong data-i18n="why.1.title">Lokalni vozači</strong><p data-i18n="why.1.text">Poznajemo planinske puteve, granične prelaze i vremenske uslove u svakom godišnjem dobu.</p></div></li>
-              <li><span class="fact-icon"><svg class="icon"><use href="#i-clock"/></svg></span><div><strong data-i18n="why.2.title">24/7, svakog dana</strong><p data-i18n="why.2.text">I kasno noću, nedjeljom i praznicima. Rezervacija telefonom u svako doba.</p></div></li>
-              <li><span class="fact-icon"><svg class="icon"><use href="#i-tag"/></svg></span><div><strong data-i18n="why.3.title">Fiksne cijene</strong><p data-i18n="why.3.text">Cijena se potvrđuje prije polaska. Bez iznenađenja i skrivenih troškova.</p></div></li>
-              <li><span class="fact-icon"><svg class="icon"><use href="#i-plane"/></svg></span><div><strong data-i18n="why.4.title">Tačni za letove</strong><p data-i18n="why.4.text">Recite nam broj leta i planiramo preuzimanje prema vašem slijetanju.</p></div></li>
+              <li><span class="fact-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mountain"/></svg></span><div><strong data-i18n="why.1.title">Lokalni vozači</strong><p data-i18n="why.1.text">Poznajemo planinske puteve, granične prelaze i vremenske uslove u svakom godišnjem dobu.</p></div></li>
+              <li><span class="fact-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg></span><div><strong data-i18n="why.2.title">24/7, svakog dana</strong><p data-i18n="why.2.text">I kasno noću, nedjeljom i praznicima. Rezervacija telefonom u svako doba.</p></div></li>
+              <li><span class="fact-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-tag"/></svg></span><div><strong data-i18n="why.3.title">Fiksne cijene</strong><p data-i18n="why.3.text">Cijena se potvrđuje prije polaska. Bez iznenađenja i skrivenih troškova.</p></div></li>
+              <li><span class="fact-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plane"/></svg></span><div><strong data-i18n="why.4.title">Tačni za letove</strong><p data-i18n="why.4.text">Recite nam broj leta i planiramo preuzimanje prema vašem slijetanju.</p></div></li>
             </ul>
           </div>
           <div class="direct reveal">
             <p data-i18n="card.247.label">Rezervacija telefonom 24/7</p>
             <a class="direct-phone" href="tel:+38269685205" data-link="tel"><span data-phone-text>+382 69 685 205</span></a>
             <div class="direct-actions">
-              <a class="btn" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span data-i18n="card.whatsapp">WhatsApp</span></a>
-              <a class="btn" href="viber://chat?number=%2B38269685205" data-link="viber"><svg class="icon"><use href="#i-viber"/></svg><span data-i18n="card.viber">Viber</span></a>
+              <a class="btn" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg><span data-i18n="card.whatsapp">WhatsApp</span></a>
+              <a class="btn" href="viber://chat?number=%2B38269685205" data-link="viber"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-viber"/></svg><span data-i18n="card.viber">Viber</span></a>
             </div>
           </div>
         </aside>
@@ -777,7 +859,7 @@
         <p class="eyebrow" data-i18n="faq.kicker">Pitanja</p>
         <h2 class="h2" data-i18n="faq.title">Česta pitanja</h2>
         <p class="lead" data-i18n="faq.lead">Niste pronašli odgovor? Pozovite nas u bilo koje doba dana i noći.</p>
-        <a class="btn btn-ghost" href="tel:+38269685205" data-link="tel"><svg class="icon"><use href="#i-phone"/></svg><span data-phone-text>+382 69 685 205</span></a>
+        <a class="btn btn-ghost" href="tel:+38269685205" data-link="tel"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span data-phone-text>+382 69 685 205</span></a>
       </div>
       <div class="faq-list">
         <details class="faq reveal" open>
@@ -794,7 +876,7 @@
         </details>
         <details class="faq reveal">
           <summary><span data-i18n="faq.q4">Da li vozite u Albaniju i na Kosovo?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
-          <p data-i18n="faq.a4">Da – za Skadar, Theth, Tiranu, Drač, Peć, Prištinu i Prizren. Za prelazak granice ponesite važeći pasoš ili ličnu kartu.</p>
+          <p data-i18n="faq.a4">Da – za Skadar, Theth, Tiranu, Drač, Peć, Prištinu i Prizren. Za prelazak granice ponesite važeći pasoš (građani EU i regiona uglavnom mogu i sa ličnom kartom) i provjerite da li vam treba viza.</p>
         </details>
         <details class="faq reveal">
           <summary><span data-i18n="faq.q5">Kako se određuje cijena?</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
@@ -840,13 +922,13 @@
       <h2 class="cta-title" data-i18n="cta.title">Vaše odredište je naša misija!</h2>
       <p class="cta-lead" data-i18n="cta.lead">Pozovite nas u svako doba ili nam pišite na WhatsApp i Viber.</p>
       <div class="cta-actions">
-        <a class="btn btn-primary btn-lg" href="tel:+38269685205" data-link="tel"><svg class="icon"><use href="#i-phone"/></svg><span data-phone-text>+382 69 685 205</span></a>
-        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span data-i18n="card.whatsapp">WhatsApp</span></a>
-        <a class="btn btn-viber btn-lg" href="viber://chat?number=%2B38269685205" data-link="viber"><svg class="icon"><use href="#i-viber"/></svg><span data-i18n="card.viber">Viber</span></a>
+        <a class="btn btn-primary btn-lg" href="tel:+38269685205" data-link="tel"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span data-phone-text>+382 69 685 205</span></a>
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg><span data-i18n="card.whatsapp">WhatsApp</span></a>
+        <a class="btn btn-viber btn-lg" href="viber://chat?number=%2B38269685205" data-link="viber"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-viber"/></svg><span data-i18n="card.viber">Viber</span></a>
       </div>
       <ul class="cta-meta">
-        <li><svg class="icon"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Gusinje%2C+Montenegro" target="_blank" rel="noopener" data-i18n="contact.location.text">Gusinje, Crna Gora</a></li>
-        <li><svg class="icon"><use href="#i-clock"/></svg><span data-i18n="contact.hours.text">Otvoreno 24 časa, 7 dana u nedjelji</span></li>
+        <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Gusinje%2C+Montenegro" target="_blank" rel="noopener" data-i18n="contact.location.text">Gusinje, Crna Gora</a></li>
+        <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg><span data-i18n="contact.hours.text">Otvoreno 24 časa, 7 dana u nedjelji</span></li>
       </ul>
     </div>
   </section>
@@ -861,10 +943,14 @@
           <span class="brand-word"><span class="w-taxi">TAXI</span><span class="w-city">GUSINJE</span></span>
         </a>
         <p class="footer-tagline" data-i18n="footer.tagline">Sigurna i udobna putovanja iz Gusinja – danju i noću.</p>
+        <p class="footer-parent">
+          <span class="footer-parent-label" data-i18n="footer.part">U sastavu</span>
+          <span class="stemi-lockup"><svg class="stemi-mark" aria-hidden="true" focusable="false"><use href="#logo-stemi"/></svg><span class="stemi-word">Stemi <b>Travel</b></span></span>
+        </p>
       </div>
       <div>
-        <h4 data-i18n="footer.menu">Meni</h4>
-        <nav class="footer-links" aria-label="Footer">
+        <h2 data-i18n="footer.menu">Meni</h2>
+        <nav class="footer-links" aria-label="Linkovi u podnožju" data-i18n-aria="footer.nav">
           <a href="#fleet" data-i18n="nav.fleet">Vozila</a>
           <a href="#routes" data-i18n="nav.routes">Destinacije</a>
           <a href="#how" data-i18n="nav.how">Kako funkcioniše</a>
@@ -873,7 +959,7 @@
         </nav>
       </div>
       <div>
-        <h4 data-i18n="footer.contact">Kontakt</h4>
+        <h2 data-i18n="footer.contact">Kontakt</h2>
         <div class="footer-links">
           <a href="tel:+38269685205" data-link="tel"><span data-phone-text>+382 69 685 205</span></a>
           <a href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener">WhatsApp</a>
@@ -882,17 +968,18 @@
         </div>
       </div>
       <div>
-        <h4 data-i18n="footer.lang">Jezik</h4>
+        <h2 data-i18n="footer.lang">Jezik</h2>
         <div class="footer-links footer-langs">
-          <button type="button" data-lang="me" class="is-active">Crnogorski</button>
-          <button type="button" data-lang="sq">Shqip</button>
-          <button type="button" data-lang="en">English</button>
+          <button type="button" data-lang="me" lang="cnr" class="is-active">Crnogorski</button>
+          <button type="button" data-lang="sq" lang="sq">Shqip</button>
+          <button type="button" data-lang="en" lang="en">English</button>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year">2026</span> Taxi Gusinje. <span data-i18n="footer.rights">Sva prava zadržana.</span></span>
+      <span>© <span id="year">2026</span> Stemi Travel · Taxi Gusinje. <span data-i18n="footer.rights">Sva prava zadržana.</span></span>
       <span data-i18n="contact.hours.text">Otvoreno 24 časa, 7 dana u nedjelji</span>
+      <a class="wx-credit" href="https://open-meteo.com/" target="_blank" rel="noopener" data-i18n="wx.credit">Vremenski podaci: Open-Meteo.com</a>
     </div>
   </div>
 </footer>
@@ -902,9 +989,9 @@
 
 <!-- Mobile action bar -->
 <div class="mobile-bar">
-  <a class="btn btn-ghost" href="tel:+38269685205" data-link="tel"><svg class="icon"><use href="#i-phone"/></svg><span data-i18n="mobile.call">Pozovi</span></a>
-  <a class="btn btn-whatsapp" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon"><use href="#i-whatsapp"/></svg><span data-i18n="mobile.whatsapp">WhatsApp</span></a>
-  <a class="btn btn-primary" href="#booking"><svg class="icon"><use href="#i-send"/></svg><span data-i18n="mobile.book">Rezerviši</span></a>
+  <a class="btn btn-ghost" href="tel:+38269685205" data-link="tel"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><span data-i18n="mobile.call">Pozovi</span></a>
+  <a class="btn btn-whatsapp" href="https://wa.me/38269685205" data-link="wa" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg><span data-i18n="mobile.whatsapp">WhatsApp</span></a>
+  <a class="btn btn-primary" href="#booking"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"/></svg><span data-i18n="mobile.book">Rezerviši</span></a>
 </div>
 
 <script src="js/config.js"></script>

@@ -1,7 +1,12 @@
 /* =========================================================
    TAXI GUSINJE – site configuration
-   This is the ONLY file you need to edit for the basics:
-   phone number, WhatsApp/Viber, prices, language.
+   Edit this file for the basics: phone number, WhatsApp/Viber,
+   prices and language.
+   A NEW PHONE NUMBER is also written in index.html (links that work
+   without JavaScript, the business data for Google, the description),
+   js/i18n.js (meta.description), sq/ and en/ index.html, 404.html and
+   the share pictures assets/og-image*.jpg – see README > Editing.
+   After editing, check the file with:  node --check js/config.js
    ========================================================= */
 window.TG_CONFIG = {
   /* Phone number in international format (used for tel: links). */

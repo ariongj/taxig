@@ -1,0 +1,4 @@
+# GitHub Pages: publish only the website, not the notes
+exclude:
+  - README.md
+  - originals

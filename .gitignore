@@ -5,3 +5,6 @@ desktop.ini
 
 # local-only editor / assistant settings
 .claude/settings.local.json
+
+# originals kept on this computer only (e.g. the printed flyer with the old number) - never published
+originals/

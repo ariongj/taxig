@@ -16,6 +16,59 @@
   var LANG_TAGS = { sq: 'sq', me: 'cnr', en: 'en' };
   /* browser language -> dictionary key */
   var BROWSER_LANGS = { sq: 'sq', en: 'en', sr: 'me', bs: 'me', hr: 'me', cnr: 'me', me: 'me' };
+  /* if js/i18n.js ever fails to load (e.g. a typo while editing), bookings still read properly in Montenegrin */
+  var FALLBACK = {
+    "plans.price.request": "Cijena na upit",
+    "plans.price.from": "od €{price}",
+    "plans.price.note": "Fiksna cijena, potvrđena telefonom",
+    "form.vehicle.car": "Automobil",
+    "form.vehicle.car.sub": "do 4 osobe",
+    "form.vehicle.van": "Kombi 8+1",
+    "form.vehicle.van.sub": "do 8 osoba",
+    "form.vehicle.bus": "Autobus",
+    "form.vehicle.bus.sub": "velike grupe",
+    "form.trip.one": "U jednom pravcu",
+    "form.trip.return": "Povratno",
+    "form.error.required": "Ovo polje je obavezno.",
+    "form.error.phone": "Unesite ispravan broj telefona, npr. +382 69 123 456.",
+    "form.error.date": "Izaberite današnji ili kasniji datum.",
+    "form.error.time": "Ovo vrijeme je već prošlo.",
+    "form.error.return": "Povratak mora biti nakon polaska.",
+    "form.error.vehicle": "Izaberite vozilo.",
+    "form.error.pax": "Unesite broj putnika (1–60).",
+    "form.error.summary": "Molimo popunite označena polja.",
+    "form.success.title": "Hvala, {name}!",
+    "form.success.wa": "Vaš zahtjev je spreman u WhatsApp-u – pritisnite „Pošalji“ ako još nije poslat. Čim ga primimo, zovemo vas na {phone} da potvrdimo cijenu i vrijeme.",
+    "form.success.sent": "Primili smo vaš zahtjev. Zovemo vas na {phone} da potvrdimo cijenu i vrijeme.",
+    "form.success.manual": "Formular nije mogao biti poslat automatski. Pošaljite zahtjev putem WhatsApp-a ili SMS-a – zatim vas zovemo na {phone} da potvrdimo.",
+    "form.success.alt": "WhatsApp se nije otvorio? Pošaljite zahtjev na drugi način:",
+    "form.success.openwa": "Otvori u WhatsApp-u",
+    "form.success.sms": "Pošalji SMS-om",
+    "form.success.call": "Pozovi odmah",
+    "form.success.again": "Pošalji novi zahtjev",
+    "wx.clear": "Vedro",
+    "wx.partly": "Djelimično oblačno",
+    "wx.cloudy": "Oblačno",
+    "wx.fog": "Magla",
+    "wx.drizzle": "Sitna kiša",
+    "wx.rain": "Kiša",
+    "wx.snow": "Snijeg",
+    "wx.storm": "Grmljavina",
+    "msg.title": "Zahtjev za rezervaciju – Taxi Gusinje",
+    "msg.name": "Ime",
+    "msg.phone": "Telefon",
+    "msg.from": "Polazak",
+    "msg.to": "Odredište",
+    "msg.date": "Datum",
+    "msg.time": "Vrijeme",
+    "msg.pax": "Putnici",
+    "msg.vehicle": "Vozilo",
+    "msg.trip": "Putovanje",
+    "msg.return": "Povratak",
+    "msg.notes": "Napomene",
+    "msg.footer": "Molim vas, pozovite me da potvrdimo.",
+    "form.error.capacity": "Ovo vozilo prima najviše {max} putnika – izaberite veće."
+  };
   var currentLang = 'me';
   var lastSuccess = null;
   var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -28,13 +81,21 @@
   function t(key, vars) {
     var dict = I18N[currentLang] || {};
     var str = dict[key];
-    if (str == null) str = (I18N.me && I18N.me[key] != null) ? I18N.me[key] : key;
+    if (str == null) str = (I18N.me && I18N.me[key] != null) ? I18N.me[key] : (FALLBACK[key] != null ? FALLBACK[key] : key);
     if (vars) {
       Object.keys(vars).forEach(function (name) {
         str = str.split('{' + name + '}').join(vars[name]);
       });
     }
     return str;
+  }
+
+  /* like t(), but null when a text is missing, so the page keeps what it already shows */
+  function tr(key) {
+    var dict = I18N[currentLang] || {};
+    if (dict[key] != null) return dict[key];
+    if (I18N.me && I18N.me[key] != null) return I18N.me[key];
+    return FALLBACK[key] != null ? FALLBACK[key] : null;
   }
 
   function detectLang() {
@@ -70,16 +131,28 @@
       try { localStorage.setItem(STORAGE_KEY, currentLang); } catch (e) { /* storage blocked */ }
     }
 
-    $all('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
-    $all('[data-i18n-html]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n-html')); });
-    $all('[data-i18n-placeholder]').forEach(function (el) { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder'))); });
-    $all('[data-i18n-aria]').forEach(function (el) { el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria'))); });
-    $all('[data-i18n-alt]').forEach(function (el) { el.setAttribute('alt', t(el.getAttribute('data-i18n-alt'))); });
-    $all('[data-i18n-value]').forEach(function (el) { el.setAttribute('value', t(el.getAttribute('data-i18n-value'))); });
+    function each(attr, apply) {
+      $all('[' + attr + ']').forEach(function (el) {
+        var text = tr(el.getAttribute(attr));
+        if (text != null) apply(el, text);
+      });
+    }
+    each('data-i18n', function (el, text) { el.textContent = text; });
+    each('data-i18n-html', function (el, text) { el.innerHTML = text; });
+    each('data-i18n-placeholder', function (el, text) { el.setAttribute('placeholder', text); });
+    each('data-i18n-aria', function (el, text) { el.setAttribute('aria-label', text); });
+    each('data-i18n-alt', function (el, text) { el.setAttribute('alt', text); });
+    each('data-i18n-value', function (el, text) { el.setAttribute('value', text); });
+    /* error messages already on screen follow the language too */
+    $all('[data-error-key]').forEach(function (el) {
+      var key = el.getAttribute('data-error-key'), vars = null;
+      try { vars = JSON.parse(el.getAttribute('data-error-vars') || 'null'); } catch (e) { /* ignore */ }
+      if (tr(key) != null) el.textContent = t(key, vars);
+    });
 
-    document.title = t('meta.title');
+    if (tr('meta.title') != null) document.title = tr('meta.title');
     var metaDescription = $('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute('content', t('meta.description'));
+    if (metaDescription && tr('meta.description') != null) metaDescription.setAttribute('content', tr('meta.description'));
 
     $all('[data-lang]').forEach(function (btn) {
       var active = btn.getAttribute('data-lang') === currentLang;
@@ -94,29 +167,44 @@
   }
 
   /* ---------- contact links and photos from config ---------- */
+  /* numbers from config.js; if one is missing or mistyped, the numbers written in the page stay */
+  function digits(value) {
+    var d = String(value || '').replace(/\D/g, '');
+    if (d.indexOf('00') === 0) d = d.slice(2);
+    return /^[1-9]\d{7,14}$/.test(d) ? d : '';
+  }
+  var PHONE_NUM = digits(CONFIG.phone);
+  var WA_NUM = digits(CONFIG.whatsapp) || PHONE_NUM;
+  var VIBER_NUM = digits(CONFIG.viber) || PHONE_NUM;
+  if (!WA_NUM) {
+    var staticWa = $('[data-link="wa"]');
+    WA_NUM = staticWa ? digits((staticWa.getAttribute('href') || '').split('?')[0]) : '';
+  }
+  if (!PHONE_NUM) PHONE_NUM = WA_NUM;
+
   function applyContact() {
-    var tel = 'tel:' + (CONFIG.phone || '');
-    var wa = 'https://wa.me/' + (CONFIG.whatsapp || '');
-    var viber = 'viber://chat?number=' + encodeURIComponent(CONFIG.viber || CONFIG.phone || '');
-    $all('[data-link="tel"]').forEach(function (a) { a.setAttribute('href', tel); });
-    $all('[data-link="wa"]').forEach(function (a) { a.setAttribute('href', wa); });
-    $all('[data-link="viber"]').forEach(function (a) { a.setAttribute('href', viber); });
-    $all('[data-phone-text]').forEach(function (el) { el.textContent = CONFIG.phoneDisplay || CONFIG.phone || ''; });
+    if (PHONE_NUM) $all('[data-link="tel"]').forEach(function (a) { a.setAttribute('href', 'tel:+' + PHONE_NUM); });
+    if (WA_NUM) $all('[data-link="wa"]').forEach(function (a) { a.setAttribute('href', 'https://wa.me/' + WA_NUM); });
+    if (VIBER_NUM) $all('[data-link="viber"]').forEach(function (a) { a.setAttribute('href', 'viber://chat?number=%2B' + VIBER_NUM); });
+    var shown = CONFIG.phoneDisplay || CONFIG.phone;
+    if (shown) $all('[data-phone-text]').forEach(function (el) { el.textContent = shown; });
   }
 
   function renderPrices() {
     $all('[data-price]').forEach(function (el) {
       var key = el.getAttribute('data-price');
       var price = CONFIG.prices ? CONFIG.prices[key] : null;
-      el.textContent = (typeof price === 'number' && price > 0)
-        ? t('plans.price.from', { price: price })
-        : t('plans.price.request');
+      var text = (typeof price === 'number' && price > 0)
+        ? (tr('plans.price.from') != null ? t('plans.price.from', { price: price }) : null)
+        : tr('plans.price.request');
+      if (text != null) el.textContent = text;
     });
   }
 
   function renderSubmitHint() {
     var hint = $('#submit-hint');
-    if (hint) hint.textContent = t(CONFIG.formEndpoint ? 'form.submit.hint.endpoint' : 'form.submit.hint');
+    var text = tr(CONFIG.formEndpoint ? 'form.submit.hint.endpoint' : 'form.submit.hint');
+    if (hint && text != null) hint.textContent = text;
   }
 
   /* ---------- header / navigation ---------- */
@@ -132,18 +220,43 @@
     navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
   $all('.nav-links a').forEach(function (a) { a.addEventListener('click', closeNav); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || !header.classList.contains('nav-open')) return;
+    var inside = header.contains(document.activeElement);
+    closeNav();
+    if (inside) navToggle.focus();
+  });
+  /* the phone menu also closes when anything outside it (or any page link) is tapped */
+  document.addEventListener('click', function (e) {
+    if (!header.classList.contains('nav-open')) return;
+    var target = e.target;
+    if (!header.contains(target) || (target.closest && target.closest('a[href^="#"]'))) closeNav();
+  });
 
   function onScroll() { header.classList.toggle('is-scrolled', window.scrollY > 24); }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
   $all('[data-lang]').forEach(function (btn) {
-    btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang'), true); });
+    btn.addEventListener('click', function () {
+      var lang = btn.getAttribute('data-lang');
+      applyLang(lang, true);
+      /* keep the address in step, so a copied link opens in the same language */
+      try {
+        var url = new URL(window.location.href);
+        var def = CONFIG.defaultLang || 'me';
+        if (def !== 'auto' && lang === def) url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
+      } catch (e) { /* old browser */ }
+    });
   });
+  /* without the dictionaries the page simply stays in Montenegrin */
+  if (!I18N.me) $all('.lang-switch, .footer-langs').forEach(function (el) { el.hidden = true; });
 
   /* ---------- reveal on scroll ---------- */
+  /* sections are only hidden for the fade-in once this script runs, so a script error never blanks the page */
   var revealElements = $all('.reveal');
+  document.documentElement.classList.add('js-reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -162,64 +275,165 @@
   var form = $('#booking-form');
   var successBox = $('#booking-success');
   var dateInput = $('#f-date');
-  var PHONE_RE = /^\+?[0-9][0-9\s().-]{6,}$/;
+  var returnBox = $('#return-fields');
+  var errorSummary = $('#form-error-summary');
 
   function field(name) { return form.elements.namedItem(name); }
 
-  function todayISO() {
-    var d = new Date();
-    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  /* phone numbers the way people type them: +382 69 123 456, 00382 69…, 069 123 456, (069) 123-456 */
+  function normalisePhone(value) {
+    var s = String(value).replace(/[\s\/().-]/g, '');
+    if (s.indexOf('00') === 0) s = '+' + s.slice(2);
+    return s;
   }
-  if (dateInput) dateInput.min = todayISO();
+  function validPhone(value) {
+    var s = normalisePhone(value);
+    if (/^\+382/.test(s)) return /^\+382\d{8,9}$/.test(s);
+    return /^\+[1-9]\d{7,14}$/.test(s) || /^0\d{8,9}$/.test(s);
+  }
 
-  function setError(el, key) {
+  /* today's date and the time right now in Gusinje, whatever the visitor's own time zone */
+  function gusinjeNow() {
+    var d = new Date();
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Podgorica', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false
+      }).formatToParts(d).forEach(function (part) { p[part.type] = part.value; });
+      if (!p.year) throw new Error('no parts');
+      return { date: p.year + '-' + p.month + '-' + p.day, time: (p.hour === '24' ? '00' : p.hour) + ':' + p.minute };
+    } catch (e) {
+      return {
+        date: d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2),
+        time: ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2)
+      };
+    }
+  }
+  function todayISO() { return gusinjeNow().date; }
+  function setDateLimits() {
+    if (dateInput) dateInput.min = todayISO();
+    var rdate = field('rdate');
+    if (rdate) rdate.min = (dateInput && dateInput.value) || todayISO();
+  }
+  setDateLimits();
+
+  /* errors: shown under the field, tied to it for screen readers, and re-translated on a language change */
+  function groupOf(el) { return el.type === 'radio' ? $all('input[name="' + el.name + '"]', form) : [el]; }
+  function describe(input, errorId) {
+    var ids = [];
+    if (input.id === 'f-phone') ids.push('phone-hint');
+    if (errorId) ids.push(errorId);
+    if (ids.length) input.setAttribute('aria-describedby', ids.join(' '));
+    else input.removeAttribute('aria-describedby');
+  }
+  function setError(el, key, vars) {
     var wrap = el.closest('.field');
     if (!wrap) return;
     wrap.classList.add('is-invalid');
     var error = wrap.querySelector('[data-error]');
-    if (error) error.textContent = t(key);
+    if (error) {
+      if (!error.id) error.id = 'err-' + (el.name || el.id);
+      error.textContent = t(key, vars);
+      error.setAttribute('data-error-key', key);
+      if (vars) error.setAttribute('data-error-vars', JSON.stringify(vars)); else error.removeAttribute('data-error-vars');
+    }
+    groupOf(el).forEach(function (input) {
+      input.setAttribute('aria-invalid', 'true');
+      describe(input, error ? error.id : null);
+    });
   }
-
+  function clearError(el) {
+    var wrap = el.closest('.field');
+    if (!wrap) return;
+    wrap.classList.remove('is-invalid');
+    var error = wrap.querySelector('[data-error]');
+    if (error) { error.textContent = ''; error.removeAttribute('data-error-key'); error.removeAttribute('data-error-vars'); }
+    groupOf(el).forEach(function (input) { input.removeAttribute('aria-invalid'); describe(input, null); });
+    if (errorSummary && !form.querySelector('.field.is-invalid')) errorSummary.hidden = true;
+  }
   function clearErrors() {
-    $all('.field.is-invalid', form).forEach(function (wrap) { wrap.classList.remove('is-invalid'); });
-    $('#form-error-summary').hidden = true;
+    $all('.field.is-invalid', form).forEach(function (wrap) {
+      var input = wrap.querySelector('input, textarea');
+      if (input) clearError(input); else wrap.classList.remove('is-invalid');
+    });
+    if (errorSummary) errorSummary.hidden = true;
   }
 
   $all('input, textarea', form).forEach(function (el) {
-    function clear() {
-      var wrap = el.closest('.field');
-      if (wrap) wrap.classList.remove('is-invalid');
-    }
+    function clear() { if (el.closest('.field.is-invalid')) clearError(el); }
     el.addEventListener('input', clear);
     el.addEventListener('change', clear);
   });
 
+  /* "return trip" asks for the date and time of the way back */
+  function syncReturn() {
+    if (!returnBox) return;
+    var isReturn = !!form.querySelector('input[name="trip"][value="return"]:checked');
+    returnBox.hidden = !isReturn;
+    ['rdate', 'rtime'].forEach(function (name) {
+      var el = field(name);
+      if (!el) return;
+      el.required = isReturn;
+      if (!isReturn) clearError(el);
+    });
+    setDateLimits();
+  }
+  $all('input[name="trip"]', form).forEach(function (radio) { radio.addEventListener('change', syncReturn); });
+  if (dateInput) dateInput.addEventListener('change', setDateLimits);
+  syncReturn();
+
+  /* no vehicle picked yet? the number of passengers suggests one */
+  var paxInput = field('passengers');
+  if (paxInput) {
+    paxInput.addEventListener('change', function () {
+      if (form.querySelector('input[name="vehicle"]:checked')) return;
+      var n = parseInt(paxInput.value, 10);
+      if (isNaN(n) || n < 1) return;
+      var radio = form.querySelector('input[name="vehicle"][value="' + (n <= 4 ? 'car' : n <= 8 ? 'van' : 'bus') + '"]');
+      if (radio) { radio.checked = true; clearError(radio); }
+    });
+  }
+
   function validate() {
     clearErrors();
     var firstBad = null;
-    function bad(el, key) { setError(el, key); if (!firstBad) firstBad = el; }
+    function bad(el, key, vars) { setError(el, key, vars); if (!firstBad) firstBad = el; }
 
     var name = field('name'), phone = field('phone'), from = field('from'), to = field('to');
     var date = field('date'), time = field('time'), passengers = field('passengers');
+    var now = gusinjeNow();
 
     if (!name.value.trim()) bad(name, 'form.error.required');
     if (!phone.value.trim()) bad(phone, 'form.error.required');
-    else if (!PHONE_RE.test(phone.value.trim())) bad(phone, 'form.error.phone');
+    else if (!validPhone(phone.value)) bad(phone, 'form.error.phone');
     if (!from.value.trim()) bad(from, 'form.error.required');
     if (!to.value.trim()) bad(to, 'form.error.required');
     if (!date.value) bad(date, 'form.error.required');
-    else if (date.value < todayISO()) bad(date, 'form.error.date');
+    else if (date.value < now.date) bad(date, 'form.error.date');
     if (!time.value) bad(time, 'form.error.required');
+    else if (date.value === now.date && time.value < now.time) bad(time, 'form.error.time');
     var count = parseInt(passengers.value, 10);
     if (!passengers.value || isNaN(count) || count < 1 || count > 60) bad(passengers, 'form.error.pax');
-    if (!form.querySelector('input[name="vehicle"]:checked')) bad(form.querySelector('input[name="vehicle"]'), 'form.error.vehicle');
+    var chosen = form.querySelector('input[name="vehicle"]:checked');
+    var CAPACITY = { car: 4, van: 8 };
+    if (!chosen) bad(form.querySelector('input[name="vehicle"]'), 'form.error.vehicle');
+    else if (!isNaN(count) && CAPACITY[chosen.value] && count > CAPACITY[chosen.value]) {
+      bad(chosen, 'form.error.capacity', { max: CAPACITY[chosen.value] });
+    }
+
+    if (form.querySelector('input[name="trip"][value="return"]:checked')) {
+      var rdate = field('rdate'), rtime = field('rtime');
+      if (!rdate.value) bad(rdate, 'form.error.required');
+      else if (date.value && rdate.value < date.value) bad(rdate, 'form.error.return');
+      if (!rtime.value) bad(rtime, 'form.error.required');
+      else if (rdate.value && rdate.value === date.value && time.value && rtime.value <= time.value) bad(rtime, 'form.error.return');
+    }
 
     if (firstBad) {
-      $('#form-error-summary').hidden = false;
+      if (errorSummary) errorSummary.hidden = false;
       scrollToEl(firstBad.closest('.field') || firstBad, 'center');
-      if (firstBad.type !== 'radio') {
-        try { firstBad.focus({ preventScroll: true }); } catch (e) { firstBad.focus(); }
-      }
+      try { firstBad.focus({ preventScroll: true }); } catch (e) { firstBad.focus(); }
       return false;
     }
     return true;
@@ -245,6 +459,9 @@
       '🚗 ' + t('msg.vehicle') + ': ' + (vehicle ? t('form.vehicle.' + vehicle.value) : '-'),
       '🔁 ' + t('msg.trip') + ': ' + (trip ? t('form.trip.' + trip.value) : '-')
     ];
+    if (trip && trip.value === 'return') {
+      lines.push('↩️ ' + t('msg.return') + ': ' + formatDate(field('rdate').value) + '   🕒 ' + t('msg.time') + ': ' + field('rtime').value);
+    }
     var notes = field('notes').value.trim();
     if (notes) lines.push('📝 ' + t('msg.notes') + ': ' + notes);
     lines.push('', t('msg.footer'));
@@ -267,6 +484,8 @@
     form.hidden = true;
     successBox.hidden = false;
     scrollToEl(successBox, 'center');
+    var title = $('#success-title');
+    if (title) { try { title.focus({ preventScroll: true }); } catch (e) { title.focus(); } }
   }
 
   function showForm() {
@@ -283,10 +502,11 @@
     var message = buildMessage();
     var name = field('name').value.trim();
     var phone = field('phone').value.trim();
-    var waUrl = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(message);
-    var smsUrl = 'sms:' + CONFIG.phone + '?&body=' + encodeURIComponent(message);
-    $('#success-wa').setAttribute('href', waUrl);
-    $('#success-sms').setAttribute('href', smsUrl);
+    /* api.whatsapp.com keeps the emoji; the short wa.me link turns them into "?" boxes */
+    var waUrl = WA_NUM ? 'https://api.whatsapp.com/send?phone=' + WA_NUM + '&text=' + encodeURIComponent(message) : '';
+    var smsUrl = PHONE_NUM ? 'sms:+' + PHONE_NUM + '?&body=' + encodeURIComponent(message) : '';
+    if (waUrl) $('#success-wa').setAttribute('href', waUrl);
+    if (smsUrl) $('#success-sms').setAttribute('href', smsUrl);
 
     if (CONFIG.formEndpoint) {
       var submitBtn = form.querySelector('button[type="submit"]');
@@ -306,19 +526,24 @@
           submitBtn.disabled = false;
           submitBtn.classList.remove('is-loading');
         });
-    } else {
+    } else if (waUrl) {
       window.open(waUrl, '_blank', 'noopener');
       showSuccess('wa', name, phone);
+    } else {
+      showSuccess('manual', name, phone);
     }
   });
 
   $('#success-again').addEventListener('click', function () {
     form.reset();
-    if (dateInput) dateInput.min = todayISO();
     clearErrors();
+    syncReturn();
+    setDateLimits();
     lastSuccess = null;
     showForm();
     scrollToEl(form, 'start');
+    var first = field('name');
+    if (first) { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
   });
 
   function focusFirstEmpty() {
@@ -341,8 +566,7 @@
       var radio = form.querySelector('input[name="vehicle"][value="' + value + '"]');
       if (radio) {
         radio.checked = true;
-        var wrap = radio.closest('.field');
-        if (wrap) wrap.classList.remove('is-invalid');
+        clearError(radio);
       }
       showForm();
       scrollToEl($('#booking'), 'start');
@@ -356,9 +580,9 @@
       e.preventDefault();
       var to = field('to');
       if (to) {
-        to.value = t(spot.getAttribute('data-place'));
-        var wrap = to.closest('.field');
-        if (wrap) wrap.classList.remove('is-invalid');
+        var label = spot.querySelector('.spot-label');
+        to.value = tr(spot.getAttribute('data-place')) || (label ? label.textContent : '');
+        clearError(to);
       }
       showForm();
       scrollToEl($('#booking'), 'start');
@@ -480,7 +704,8 @@
     if (!box || !WX.kind) return;
     $('#live-temp').textContent = Math.round(WX.temp) + '°C';
     $('#live-desc').textContent = t('wx.' + WX.kind);
-    var icon = (WX.kind === 'clear' && !WX.isDay) ? 'moon' : WX_ICONS[WX.kind];
+    var sunUp = sunPosition(new Date()).alt > -0.833;
+    var icon = (WX.kind === 'clear' && !sunUp) ? 'moon' : WX_ICONS[WX.kind];
     var use = box.querySelector('use');
     if (use) use.setAttribute('href', '#i-wx-' + icon);
     box.hidden = false;
@@ -685,7 +910,8 @@
     $all('.peak-label').forEach(function (label) {
       var dx = Math.max(0, Math.abs(x - Number(label.getAttribute('x'))) - 50);
       var dy = y - (Number(label.getAttribute('y')) - 5);
-      var near = disc * (1 - clamp((Math.sqrt(dx * dx + dy * dy) - 16) / 36, 0, 1));
+      var hidden = (WX_GREY[sceneKind] || 0) >= 0.4; /* clouds cover the sun */
+      var near = hidden ? 0 : disc * (1 - clamp((Math.sqrt(dx * dx + dy * dy) - 16) / 36, 0, 1));
       label.style.opacity = near > 0.01 ? (1 - near).toFixed(2) : '';
     });
     root.setAttribute('data-sky', sun.alt >= 8 ? 'day' : sun.alt >= 0 ? 'golden' : sun.alt >= -6 ? 'dusk' : sun.alt >= -12 ? 'twilight' : 'night');
@@ -706,6 +932,9 @@
     } catch (e) { return null; }
   }
 
+  var LITE = !!((window.matchMedia && window.matchMedia('(max-width: 720px)').matches) ||
+    (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4));
+
   /* dress the scene for the weather: grey veil, snow on the peaks, falling snow/rain, fog, lightning */
   function setScene(kind) {
     sceneKind = kind;
@@ -724,7 +953,7 @@
 
     var rnd = Math.random, i, el, x;
     if (kind === 'snow') {
-      for (i = 0; i < 90; i++) {
+      for (i = 0; i < (LITE ? 40 : 90); i++) {
         el = document.createElementNS(SVGNS, 'circle');
         el.setAttribute('class', 'flake');
         el.setAttribute('cx', (rnd() * 1600).toFixed(0));
@@ -736,7 +965,7 @@
         layer.appendChild(el);
       }
     } else if (kind === 'rain' || kind === 'drizzle' || kind === 'storm') {
-      var count = kind === 'drizzle' ? 70 : 140;
+      var count = kind === 'drizzle' ? (LITE ? 35 : 70) : (LITE ? 60 : 140);
       for (i = 0; i < count; i++) {
         el = document.createElementNS(SVGNS, 'line');
         el.setAttribute('class', 'drop');
@@ -763,7 +992,10 @@
 
   (function () {
     renderClock();
-    window.setInterval(renderClock, 20000);
+    window.setTimeout(function () {
+      renderClock();
+      window.setInterval(renderClock, 60000);
+    }, 60500 - (Date.now() % 60000));
 
     /* the Prokletije peaks carry snow from November to April */
     var heroBg = $('.hero-bg');
@@ -783,23 +1015,67 @@
     window.setTimeout(function () { document.documentElement.classList.add('sky-ready'); }, 60);
     /* the sky moves on with the clock */
     window.setInterval(renderSky, 60000);
-    document.addEventListener('visibilitychange', function () { if (!document.hidden) renderSky(); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) return;
+      renderClock();
+      renderSky();
+      if (Date.now() - lastWeather > WEATHER_EVERY) loadWeather();
+    });
 
-    if (!window.fetch) return;
-    var url = 'https://api.open-meteo.com/v1/forecast?latitude=42.5622&longitude=19.8342' +
-      '&current=temperature_2m,weather_code,is_day&timezone=Europe%2FPodgorica';
-    fetch(url)
-      .then(function (res) { if (!res.ok) throw new Error('weather ' + res.status); return res.json(); })
-      .then(function (data) {
-        var now = data && data.current;
-        if (!now || typeof now.temperature_2m !== 'number') return;
-        WX.temp = now.temperature_2m;
-        WX.kind = wxKind(now.weather_code);
-        WX.isDay = now.is_day === 1;
-        renderWeather();
-        if (!forced) setScene(WX.kind);
-      })
-      .catch(function () { /* offline or blocked: keep the clear-sky scene */ });
+    var WEATHER_EVERY = 15 * 60000;
+    var lastWeather = 0;   /* last attempt */
+    var lastWeatherOk = 0; /* last successful reading */
+    function loadWeather() {
+      if (!window.fetch) return;
+      lastWeather = Date.now();
+      var url = 'https://api.open-meteo.com/v1/forecast?latitude=42.5622&longitude=19.8342' +
+        '&current=temperature_2m,weather_code,is_day&timezone=Europe%2FPodgorica';
+      fetch(url)
+        .then(function (res) { if (!res.ok) throw new Error('weather ' + res.status); return res.json(); })
+        .then(function (data) {
+          var now = data && data.current;
+          if (!now || typeof now.temperature_2m !== 'number') return;
+          var kind = wxKind(now.weather_code);
+          lastWeatherOk = Date.now();
+          WX.temp = now.temperature_2m;
+          WX.isDay = now.is_day === 1;
+          var changed = kind !== WX.kind;
+          WX.kind = kind;
+          renderWeather();
+          if (!forced && changed) setScene(kind);
+        })
+        .catch(function () {
+          /* offline or blocked: try again in 5 minutes; an old reading is not shown as "now" for long */
+          lastWeather = Date.now() - WEATHER_EVERY + 5 * 60000;
+          if (lastWeatherOk && Date.now() - lastWeatherOk > 45 * 60000) {
+            var box = $('#live-wx');
+            if (box) box.hidden = true;
+          }
+        });
+    }
+    loadWeather();
+    window.setInterval(function () { if (!document.hidden && Date.now() - lastWeather >= WEATHER_EVERY) loadWeather(); }, 60000);
+  })();
+
+  /* ---------- animations rest while their part of the page is off screen (saves battery on phones) ---------- */
+  (function () {
+    function pauseSvg(svg, pause) {
+      if (pause && svg.pauseAnimations) svg.pauseAnimations();
+      if (!pause && svg.unpauseAnimations) svg.unpauseAnimations();
+    }
+    if (reduceMotion) {
+      /* CSS cannot stop the SVG's own animations (moving cars, pulsing spots, the plane) */
+      $all('svg').forEach(function (svg) { pauseSvg(svg, true); });
+      return;
+    }
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('anim-off', !entry.isIntersecting);
+        $all('svg', entry.target).forEach(function (svg) { pauseSvg(svg, !entry.isIntersecting); });
+      });
+    }, { rootMargin: '100px 0px' });
+    $all('.hero, .cta, .route-map').forEach(function (el) { io.observe(el); });
   })();
 
   /* ---------- "how it works": the taxi drives while the steps are on screen ---------- */
