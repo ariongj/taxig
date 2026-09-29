@@ -312,6 +312,22 @@ legend { padding: 0; }
 }
 .pano-hint .icon { width: 15px; height: 15px; color: var(--yellow); }
 .hint-swipe { display: none; }
+/* arrows that move the landscape when it is wider than the screen (main.js shows them) */
+.pano-nav {
+  position: absolute; z-index: 3; bottom: 130px;
+  width: 40px; height: 40px; padding: 0; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer; pointer-events: auto;
+  color: #fff; background: rgba(10, 14, 23, 0.72); border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  transition: background 0.2s, border-color 0.2s;
+}
+.pano-nav:hover { background: rgba(10, 14, 23, 0.92); border-color: var(--yellow); }
+.pano-nav .icon { width: 22px; height: 22px; stroke-width: 2.4; }
+.pano-prev { left: max(10px, env(safe-area-inset-left)); }
+.pano-prev .icon { transform: rotate(90deg); }
+.pano-next { right: max(10px, env(safe-area-inset-right)); }
+.pano-next .icon { transform: rotate(-90deg); }
 .pano-hint { transition: opacity 0.4s; }
 .pano-hint.is-done { opacity: 0; }
 
@@ -812,6 +828,8 @@ legend { padding: 0; }
   .hint-swipe { display: inline; }
 }
 @media (max-width: 923px) and (pointer: fine) {
+  .pano-scroll { cursor: grab; user-select: none; -webkit-user-select: none; }
+  .pano-scroll.is-dragging { cursor: grabbing; }
   .pano-scroll { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.35) transparent; }
   .pano-scroll::-webkit-scrollbar { display: block; height: 6px; }
   .pano-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.35); border-radius: 3px; }
@@ -847,7 +865,10 @@ legend { padding: 0; }
   .lead { font-size: 15.5px; line-height: 1.6; }
 
   /* hero */
-  .hero { padding: 86px 0 264px; }
+  .hero { padding: 86px 0 252px; }
+  .pano, .pano-scroll { height: 250px; }
+  .pano-scroll .pano { width: 770px; }
+  .pano-nav { bottom: 105px; }
   .hero-grid { gap: 34px; }
   .hero-chips { gap: 6px; }
   .status, .live-chip { padding: 6px 11px; font-size: 12.5px; }

@@ -646,6 +646,54 @@
     ['pointerdown', 'touchstart', 'wheel'].forEach(function (type) {
       scroller.addEventListener(type, onTouch, { passive: true });
     });
+
+    /* arrow buttons: shown only on the side where there is more landscape to see */
+    var prevBtn = $('.pano-prev'), nextBtn = $('.pano-next');
+    function updateNav() {
+      var can = scrollable(), max = scroller.scrollWidth - scroller.clientWidth;
+      var focused = document.activeElement;
+      if (prevBtn) prevBtn.hidden = !can || scroller.scrollLeft <= 4;
+      if (nextBtn) nextBtn.hidden = !can || scroller.scrollLeft >= max - 4;
+      /* keep the keyboard focus on a visible arrow when one side runs out */
+      if (focused === prevBtn && prevBtn.hidden && nextBtn && !nextBtn.hidden) nextBtn.focus();
+      if (focused === nextBtn && nextBtn.hidden && prevBtn && !prevBtn.hidden) prevBtn.focus();
+    }
+    [prevBtn, nextBtn].forEach(function (btn) {
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        onTouch();
+        var step = scroller.clientWidth * 0.7 * Number(btn.getAttribute('data-dir'));
+        if (scroller.scrollBy) scroller.scrollBy({ left: step, behavior: reduceMotion ? 'auto' : 'smooth' });
+        else scroller.scrollLeft += step;
+      });
+    });
+    scroller.addEventListener('scroll', updateNav, { passive: true });
+    window.addEventListener('resize', updateNav);
+    updateNav();
+
+    /* mouse: drag the landscape sideways (a drag is not a tap on a place) */
+    var drag = null, dragged = false;
+    scroller.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0 || !scrollable()) return;
+      drag = { x: e.clientX, left: scroller.scrollLeft, moved: false };
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      if (!drag.moved && Math.abs(dx) > 5) { drag.moved = true; scroller.classList.add('is-dragging'); }
+      if (drag.moved) scroller.scrollLeft = drag.left - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      if (!drag) return;
+      dragged = drag.moved;
+      drag = null;
+      scroller.classList.remove('is-dragging');
+      window.setTimeout(function () { dragged = false; }, 0);
+    });
+    scroller.addEventListener('click', function (e) {
+      if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; }
+    }, true);
+    scroller.addEventListener('dragstart', function (e) { e.preventDefault(); });
     if (reduceMotion || !('IntersectionObserver' in window)) return;
     var seen = new IntersectionObserver(function (entries) {
       if (!entries[0].isIntersecting) return;
